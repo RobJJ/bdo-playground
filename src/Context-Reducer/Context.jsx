@@ -2,9 +2,16 @@ import React, { useContext, useState } from "react";
 //
 const AppContext = React.createContext();
 //
+//
 const AppProvider = ({ children }) => {
   //
-  return <AppContext.Provider>{children}</AppContext.Provider>;
+  const [tabList, setTabList] = useState([]);
+  //
+  return (
+    <AppContext.Provider value={{ tabList, setTabList }}>
+      {children}
+    </AppContext.Provider>
+  );
 };
 //
 //
