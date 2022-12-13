@@ -18,9 +18,13 @@ function App() {
           <div className="w-full h-full bg-red-200">Map Content here</div>
         </div>
         {/* Info area */}
-        <div className="bg-blue-200 w-2/6 h-full smlr:w-full smlr:h-2/6 p-2 flex flex-col gap-2">
-          <div className="bg-red-200 w-full h-2/6">Basic Info</div>
-          <div className="bg-red-200 w-full h-4/6">Regional List</div>
+        <div className="bg-blue-200 w-2/6 h-full smlr:w-full smlr:h-2/6 p-2 flex flex-col smlr:flex-row gap-2">
+          <div className="bg-red-200 w-full h-2/6 smlr:h-full smlr:w-2/6">
+            Basic Info
+          </div>
+          <div className="bg-red-200 w-full h-4/6 smlr:h-full smlr:w-4/6">
+            Regional List
+          </div>
         </div>
       </section>
     </div>
