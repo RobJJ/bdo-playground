@@ -17,3 +17,8 @@ using: https://csvjson.com/csv2json
    .
    .
 3.
+
+QUESTIONS:
+.
+
+1. For the map visual.. do the colors indicate population density?
