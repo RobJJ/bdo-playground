@@ -21,4 +21,11 @@ using: https://csvjson.com/csv2json
 QUESTIONS:
 .
 
-1. For the map visual.. do the colors indicate population density?
+**MAP VISUAL**
+Map on landing page will show the total scores as a range of colors, depending on their values. You should be able to view each score as a different version of the map.
+The map will then have four different toggles to see the different performance of each PROVINCE: Can have 5 settings choices....
+Also be able to filter these scores by year
+Filters: Year & 5 toggles
+.
+.
+**SCATTER VISUAL**

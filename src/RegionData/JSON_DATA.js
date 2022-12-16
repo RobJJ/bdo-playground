@@ -18,6 +18,19 @@ export const jsonData = [
     REGION_COLOR: "#00AAAE",
     PROVINCE: "An Giang",
     DISTRICT: "Thoai Son",
+    ZONE: "urban",
+    YEAR: 2018,
+    ECON_SCORE: 53.88059701492537,
+    ENVR_SCORE: 25.81094527363184,
+    FOREST_SCORE: 15.82089552238806,
+    AIR_SCORE: 43.40298507462687,
+    TEMP_SCORE: 18.208955223880597,
+  },
+  {
+    GEOGRAPHIC_REGION: "Mekong River Delta",
+    REGION_COLOR: "#00AAAE",
+    PROVINCE: "An Giang",
+    DISTRICT: "Thoai Son",
     ZONE: "rural",
     YEAR: 2019,
     ECON_SCORE: 31.32621951219512,
@@ -169,6 +182,7 @@ export const jsonData = [
     AIR_SCORE: 42.86585365853659,
     TEMP_SCORE: 14.786585365853655,
   },
+
   {
     GEOGRAPHIC_REGION: "Mekong River Delta",
     REGION_COLOR: "#00AAAE",
