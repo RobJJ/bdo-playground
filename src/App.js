@@ -1,4 +1,5 @@
 import React from "react";
+import TabBar from "./Components/TabBar/TabBar-component";
 import HomePage from "./Pages/HomePage-page";
 import SummaryPage from "./Pages/SummaryPage-page";
 
@@ -10,9 +11,7 @@ function App() {
   return (
     <div className="w-screen h-screen p-2 bg-[#f5f5f5] flex flex-col">
       {/* TabBar */}
-      <section className="bg-slate-300 w-full">
-        TabBar - routing ability for the outlet below
-      </section>
+      <TabBar />
       {/* Content HOME PAGE - 2 main areas : graph and info - Top level display 1/2 */}
       {/*<SummaryPage />*/}
       <HomePage />
