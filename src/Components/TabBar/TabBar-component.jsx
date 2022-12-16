@@ -13,3 +13,7 @@ function TabBar(params) {
 }
 //
 export default TabBar;
+//
+// **** NOTES ****
+//
+// Dont make the HOME button part of the tabBarState. We want it to be a fixed button that just routes a user back to the HomePage page.

@@ -1,17 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useReducer } from "react";
+import reducer from "./Reducer";
+//
+const initialState = {
+  tabBarState: [],
+};
 //
 const AppContext = React.createContext();
 //
 //
 const AppProvider = ({ children }) => {
   //
-  const [tabList, setTabList] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initialState);
   //
-  return (
-    <AppContext.Provider value={{ tabList, setTabList }}>
-      {children}
-    </AppContext.Provider>
-  );
+  return <AppContext.Provider value={{}}>{children}</AppContext.Provider>;
 };
 //
 //
