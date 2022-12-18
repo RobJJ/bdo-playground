@@ -2,6 +2,7 @@ import React from "react";
 import TabBar from "./Components/TabBar/TabBar-component";
 import HomePage from "./Pages/HomePage-page";
 import SummaryPage from "./Pages/SummaryPage-page";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 //
 //
@@ -12,8 +13,11 @@ function App() {
     <div className="w-screen h-screen p-2 bg-[#f5f5f5] flex flex-col">
       {/* TabBar */}
       <TabBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="summary/:district" element={<SummaryPage />} />
+      </Routes>
       {/* Content HOME PAGE - 2 main areas : graph and info - Top level display 1/2 */}
-      <HomePage />
     </div>
   );
 }

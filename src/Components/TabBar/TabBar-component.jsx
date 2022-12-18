@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 //
 function TabBar(params) {
   return (
     <div className="bg-slate-300 w-full p-2">
       <div className="w-full bg-white rounded-lg shadow-lg flex p-1">
         {/*Home NAV - fixed here. reroutes to homepage */}
-        <span className="p-1 border-2 border-black rounded-lg">HOME PAGE</span>
+        <Link to="/" className="p-1 border-2 border-black rounded-lg">
+          HOME PAGE
+        </Link>
       </div>
       {/* This section will loop over tabBar state array */}
     </div>
