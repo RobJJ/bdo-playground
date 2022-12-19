@@ -5,7 +5,9 @@ import { useGlobalContext } from "../Context-Reducer/Context";
 //
 function HomePage(params) {
   //
-  const { regionData } = useGlobalContext();
+  const { regionData, tabAddFunc } = useGlobalContext();
+  //
+
   //
   return (
     <section className="bg-blue-100 w-full h-full p-2 flex smlr:flex-col gap-1">
@@ -19,7 +21,11 @@ function HomePage(params) {
             {regionData.map((regionObj) => {
               const { PROVINCE, DISTRICT } = regionObj;
               return (
-                <Link key={DISTRICT} to={`summary/${DISTRICT}`}>
+                <Link
+                  key={DISTRICT}
+                  to={`summary/${DISTRICT}`}
+                  onClick={() => tabAddFunc(DISTRICT)}
+                >
                   {PROVINCE}:{DISTRICT}
                 </Link>
               );
@@ -41,3 +47,5 @@ function HomePage(params) {
 }
 //
 export default HomePage;
+
+// When we render the link and fire the click event, we could pass the full object. Keep this in mind for later if this make it easier to render the summary component from the tabBar and not filter it

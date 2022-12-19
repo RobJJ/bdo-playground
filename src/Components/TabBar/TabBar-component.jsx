@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../../Context-Reducer/Context";
 //
 function TabBar(params) {
+  //
+  const { tabBarState } = useGlobalContext();
+  //
   return (
     <div className="bg-slate-300 w-full p-2">
       <div className="w-full bg-white rounded-lg shadow-lg flex p-1">
@@ -9,6 +13,16 @@ function TabBar(params) {
         <Link to="/" className="p-1 border-2 border-black rounded-lg">
           HOME PAGE
         </Link>
+        {tabBarState.map((district) => {
+          return (
+            <div
+              key={district.name}
+              className="p-1 border-2 border-black rounded-lg"
+            >
+              <Link to={`summary/${district.name}`}>{district.name}</Link>
+            </div>
+          );
+        })}
       </div>
       {/* This section will loop over tabBar state array */}
     </div>
