@@ -7,6 +7,17 @@ const reducer = (state, action) => {
     };
   }
   //
+  if (action.type === "REMOVE_DISTRICT_FROM_TABBAR") {
+    const newTabBarState = state.tabBarState.filter(
+      (districtObj) => districtObj.name !== action.payload
+    );
+    //
+    return {
+      ...state,
+      tabBarState: newTabBarState,
+    };
+  }
+  //
   return state;
 };
 //

@@ -1,10 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../Context-Reducer/Context";
 //
 function TabBar(params) {
   //
-  const { tabBarState } = useGlobalContext();
+  const { tabBarState, dispatch } = useGlobalContext();
+  const navigate = useNavigate();
+  //
+  const removeTabDistrict = (districtName) => {
+    console.log("The del button has been clicked!");
+    // remove the district from the tabBarState
+    dispatch({ type: "REMOVE_DISTRICT_FROM_TABBAR", payload: districtName });
+    // Navigate the user back to HOMEPAGE
+    navigate("/");
+  };
   //
   return (
     <div className="bg-slate-300 w-full p-2">
@@ -17,9 +26,16 @@ function TabBar(params) {
           return (
             <div
               key={district.name}
-              className="p-1 border-2 border-black rounded-lg"
+              className="p-1 border-2 border-black rounded-lg flex gap-2"
             >
               <Link to={`summary/${district.name}`}>{district.name}</Link>
+              <span
+                onClick={() => removeTabDistrict(district.name)}
+                className="bg-red-300 cursor-pointer"
+              >
+                {" "}
+                x{" "}
+              </span>
             </div>
           );
         })}
