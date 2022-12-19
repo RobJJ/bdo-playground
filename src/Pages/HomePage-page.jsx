@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../Context-Reducer/Context";
 
 //
 function HomePage(params) {
+  //
+  const { regionData } = useGlobalContext();
+  //
   return (
     <section className="bg-blue-100 w-full h-full p-2 flex smlr:flex-col gap-1">
       {/* Graphs area */}
@@ -12,10 +16,14 @@ function HomePage(params) {
             Creating some random district names here
           </h2>
           <div className="flex flex-col gap-2 text-blue-500">
-            <Link to="summary/one">Distrcit ONE</Link>
-            <Link to="summary/two">Distrcit TWO</Link>
-            <Link to="summary/three">Distrcit THREE</Link>
-            <Link to="summary/four">Distrcit FOUR</Link>
+            {regionData.map((regionObj) => {
+              const { PROVINCE, DISTRICT } = regionObj;
+              return (
+                <Link key={DISTRICT} to={`summary/${DISTRICT}`}>
+                  {PROVINCE}:{DISTRICT}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>

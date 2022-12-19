@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 //
 function SummaryPage(params) {
+  //
+  const { district } = useParams();
+
+  //
   return (
     <div className="bg-blue-100 w-full h-full p-2 flex gap-2">
       <section className="w-4/6 h-full bg-blue-200 flex flex-col gap-2 p-2">
+        {/* VISUAL DATA SECTION - LINE GRAPH */}
         <div className="bg-white w-full h-4/6 rounded-lg shadow-lg p-2">
-          Graph section
+          District Rendered: {district}
         </div>
+        {/* VISUAL DATA SECTION - BAR GRAPH */}
         <div className="bg-white w-full h-2/6 rounded-lg shadow-lg p-2">
           Bar score section
         </div>
