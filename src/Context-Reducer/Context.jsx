@@ -16,9 +16,11 @@ const AppProvider = ({ children }) => {
   const [regionData, setRegionData] = useState(testDataBDO);
   //
   const tabAddFunc = (districtName) => {
-    console.log(
-      "A district from the homePage has been clicked. It should now be added to the tabBar!"
+    // Do check to see if distrcit is already in tabBar state
+    const districtAlreadyExists = state.tabBarState.some(
+      (districtObj) => districtObj.name === districtName
     );
+    if (districtAlreadyExists) return;
     dispatch({ type: "ADD_TAB_TO_STATE", payload: districtName });
   };
   return (

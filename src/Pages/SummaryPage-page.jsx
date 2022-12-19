@@ -6,6 +6,9 @@ function SummaryPage(params) {
   //
   const { district } = useParams();
   const { regionData } = useGlobalContext();
+  const districtData = regionData.find(
+    (regionObj) => regionObj.DISTRICT === district
+  );
   //
   return (
     <div className="bg-blue-100 w-full h-full p-2 flex gap-2">
@@ -13,18 +16,13 @@ function SummaryPage(params) {
         {/* VISUAL DATA SECTION - LINE GRAPH */}
         <div className="bg-white w-full h-4/6 rounded-lg shadow-lg p-2">
           <h2>Your data rendered</h2>
-          {regionData.map((regionObj) => {
-            if (regionObj.DISTRICT === district) {
-              const { GEOGRAPHIC_REGION, PROVINCE, DISTRICT } = regionObj;
-              return (
-                <div key={district} className="bg-blue-100 flex flex-col">
-                  <span>Region: {GEOGRAPHIC_REGION}</span>
-                  <span>Province: {PROVINCE}</span>
-                  <span>District: {DISTRICT}</span>
-                </div>
-              );
-            }
-          })}
+          {districtData && (
+            <div key={district} className="bg-blue-100 flex flex-col">
+              <span>Region: {districtData.GEOGRAPHIC_REGION}</span>
+              <span>Province: {districtData.PROVINCE}</span>
+              <span>District: {districtData.DISTRICT}</span>
+            </div>
+          )}
         </div>
         {/* VISUAL DATA SECTION - BAR GRAPH */}
         <div className="bg-white w-full h-2/6 rounded-lg shadow-lg p-2">
@@ -41,3 +39,18 @@ function SummaryPage(params) {
 }
 //
 export default SummaryPage;
+
+//
+//{regionData.map((regionObj) => {
+//   if (regionObj.DISTRICT === district) {
+//     const { GEOGRAPHIC_REGION, PROVINCE, DISTRICT } = regionObj;
+//     return (
+//       <div key={district} className="bg-blue-100 flex flex-col">
+//         <span>Region: {GEOGRAPHIC_REGION}</span>
+//         <span>Province: {PROVINCE}</span>
+//         <span>District: {DISTRICT}</span>
+//       </div>
+//     );
+//   }
+//   return;
+// })}
