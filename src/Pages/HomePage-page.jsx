@@ -1,25 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context-Reducer/Context";
-import FilterButton from "../Components/FilterButton/FilterButton-component";
+import FilterButtonYear from "../Components/FilterButtons/FilterButtonYear-component";
 import { v4 as uuidv4 } from "uuid";
+import FilterButtonProvince from "../Components/FilterButtons/FilterButtonProvince-component";
 //
 //
 function HomePage(params) {
   console.log("HomePage Rendered!");
   //
-  const { regionData, tabAddFunc, chosenYear } = useGlobalContext();
+  const { regionData, tabAddFunc, chosenYear, chosenProvince } =
+    useGlobalContext();
   const [filteredData, setFilteredData] = useState(regionData);
   //
   useEffect(() => {
-    if (!chosenYear) return;
-    // Filter the data based on year chosen
-    const newFilteredData = regionData.filter(
-      (dataObj) => dataObj.YEAR === Number(chosenYear)
-    );
+    if (!chosenYear && !chosenProvince) return;
+    // Set newFilteredData to all available Data
+    let newFilteredData = regionData;
+    // Filter the data based on year chosen option exists
+    if (chosenYear) {
+      newFilteredData = newFilteredData.filter(
+        (dataObj) => dataObj.YEAR === Number(chosenYear)
+      );
+    }
+    if (chosenProvince) {
+      newFilteredData = newFilteredData.filter(
+        (dataObj) =>
+          dataObj.PROVINCE.split(" ").join("") ===
+          chosenProvince.split(" ").join("")
+      );
+    }
     // Refresh the data used for the component
     setFilteredData(newFilteredData);
-  }, [chosenYear]);
+  }, [chosenYear, chosenProvince]);
   //
   return (
     <section className="bg-blue-100 w-full h-full p-2 flex smlr:flex-col gap-1 overflow-auto">
@@ -51,7 +64,8 @@ function HomePage(params) {
           Basic Info
         </div>
         <div className="bg-white w-full h-4/6 smlr:h-full smlr:w-4/6 rounded-lg shadow-lg p-2">
-          <FilterButton />
+          <FilterButtonYear />
+          <FilterButtonProvince />
         </div>
       </div>
     </section>

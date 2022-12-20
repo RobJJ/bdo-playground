@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useGlobalContext } from "../../Context-Reducer/Context";
 
-const FilterButton = () => {
+const FilterButtonProvince = () => {
   //
-  const { chosenYear, setChosenYear } = useGlobalContext();
+  const { chosenProvince, setChosenProvince } = useGlobalContext();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -12,9 +12,12 @@ const FilterButton = () => {
     setIsOpen(!isOpen);
   };
   //
-  const handleYearClick = (e) => {
-    console.log("The year has been clicked.. year is:", e.target.dataset.tag);
-    setChosenYear(e.target.dataset.tag);
+  const handleProvinceClick = (e) => {
+    console.log(
+      "The province has been clicked.. province is:",
+      e.target.dataset.tag
+    );
+    setChosenProvince(e.target.dataset.tag);
     setIsOpen(!isOpen);
   };
   //
@@ -27,7 +30,7 @@ const FilterButton = () => {
             type="button"
             className="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
           >
-            {chosenYear ? chosenYear : "Select Year"}
+            {chosenProvince ? chosenProvince : "Select Province"}
           </button>
         </span>
       </div>
@@ -41,36 +44,28 @@ const FilterButton = () => {
               aria-labelledby="options-menu"
             >
               <span
-                onClick={handleYearClick}
-                data-tag="2018"
+                onClick={handleProvinceClick}
+                data-tag="An Giang"
                 className=" block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
                 role="menuitem"
               >
-                2018
+                An Giang
               </span>
               <span
-                onClick={handleYearClick}
-                data-tag="2019"
+                onClick={handleProvinceClick}
+                data-tag="Bac Kan"
                 className=" block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
                 role="menuitem"
               >
-                2019
+                Bac Kan
               </span>
               <span
-                onClick={handleYearClick}
-                data-tag="2020"
+                onClick={handleProvinceClick}
+                data-tag="Tay Ninh"
                 className=" block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
                 role="menuitem"
               >
-                2020
-              </span>
-              <span
-                onClick={handleYearClick}
-                data-tag="2021"
-                className=" block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
-                role="menuitem"
-              >
-                2021
+                Tay Ninh
               </span>
             </div>
           </div>
@@ -80,4 +75,4 @@ const FilterButton = () => {
   );
 };
 
-export default FilterButton;
+export default FilterButtonProvince;

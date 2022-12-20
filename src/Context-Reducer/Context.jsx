@@ -15,8 +15,9 @@ const AppProvider = ({ children }) => {
   //
   const [state, dispatch] = useReducer(reducer, initialState);
   const [regionData, setRegionData] = useState(testDataBDO);
-  // This chosenYear variable is for the filter button (testing)
+  // These chosen variables are for the filter button (testing)
   const [chosenYear, setChosenYear] = useState(false);
+  const [chosenProvince, setChosenProvince] = useState(false);
   //
   //
   const tabAddFunc = (districtName) => {
@@ -39,6 +40,8 @@ const AppProvider = ({ children }) => {
         tabAddFunc,
         chosenYear,
         setChosenYear,
+        chosenProvince,
+        setChosenProvince,
       }}
     >
       {children}
