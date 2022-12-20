@@ -1,10 +1,20 @@
 import React, { useState } from "react";
+import { useGlobalContext } from "../../Context-Reducer/Context";
 
 const FilterButton = () => {
   //
+  const { chosenYear, setChosenYear } = useGlobalContext();
+
   const [isOpen, setIsOpen] = useState(false);
+
   //
   const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+  //
+  const handleYearClick = (e) => {
+    console.log("The year has been clicked.. year is:", e.target.dataset.tag);
+    setChosenYear(e.target.dataset.tag);
     setIsOpen(!isOpen);
   };
   //
@@ -17,7 +27,7 @@ const FilterButton = () => {
             type="button"
             className="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
           >
-            Select Year
+            {chosenYear ? chosenYear : "Select Year"}
           </button>
         </span>
       </div>
@@ -30,27 +40,38 @@ const FilterButton = () => {
               aria-orientation="vertical"
               aria-labelledby="options-menu"
             >
-              <a
-                href="#1"
-                className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+              <span
+                onClick={handleYearClick}
+                data-tag="2018"
+                className=" block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
                 role="menuitem"
               >
-                Option 1
-              </a>
-              <a
-                href="#2"
-                className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                2018
+              </span>
+              <span
+                onClick={handleYearClick}
+                data-tag="2019"
+                className=" block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
                 role="menuitem"
               >
-                Option 2
-              </a>
-              <a
-                href="#3"
-                className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                2019
+              </span>
+              <span
+                onClick={handleYearClick}
+                data-tag="2020"
+                className=" block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
                 role="menuitem"
               >
-                Option 3
-              </a>
+                2020
+              </span>
+              <span
+                onClick={handleYearClick}
+                data-tag="2021"
+                className=" block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
+                role="menuitem"
+              >
+                2021
+              </span>
             </div>
           </div>
         </div>

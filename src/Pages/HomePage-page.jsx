@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context-Reducer/Context";
 import FilterButton from "../Components/FilterButton/FilterButton-component";
+import { v4 as uuidv4 } from "uuid";
 //
 //
 function HomePage(params) {
+  console.log("HomePage Rendered!");
   //
-  const { regionData, tabAddFunc } = useGlobalContext();
+  const { regionData, tabAddFunc, chosenYear } = useGlobalContext();
+  const [filteredData, setFilteredData] = useState(regionData);
   //
-
+  useEffect(() => {
+    if (!chosenYear) return;
+    // Filter the data based on year chosen
+    const newFilteredData = regionData.filter(
+      (dataObj) => dataObj.YEAR === Number(chosenYear)
+    );
+    // Refresh the data used for the component
+    setFilteredData(newFilteredData);
+  }, [chosenYear]);
   //
   return (
     <section className="bg-blue-100 w-full h-full p-2 flex smlr:flex-col gap-1 overflow-auto">
@@ -19,11 +30,11 @@ function HomePage(params) {
             Creating some random district names here
           </h2>
           <div className="bg-red-100 flex flex-col gap-2 text-blue-500 overflow-auto">
-            {regionData.map((regionObj) => {
+            {filteredData.map((regionObj) => {
               const { PROVINCE, DISTRICT, YEAR, ZONE } = regionObj;
               return (
                 <Link
-                  key={DISTRICT}
+                  key={uuidv4()}
                   to={`summary/${DISTRICT}`}
                   onClick={() => tabAddFunc(DISTRICT)}
                 >
