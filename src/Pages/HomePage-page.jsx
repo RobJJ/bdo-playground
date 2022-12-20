@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context-Reducer/Context";
-
+import FilterButton from "../Components/FilterButton/FilterButton-component";
+//
 //
 function HomePage(params) {
   //
@@ -10,23 +11,23 @@ function HomePage(params) {
 
   //
   return (
-    <section className="bg-blue-100 w-full h-full p-2 flex smlr:flex-col gap-1">
+    <section className="bg-blue-100 w-full h-full p-2 flex smlr:flex-col gap-1 overflow-auto">
       {/* Graphs area */}
       <div className="bg-blue-200 w-4/6 smlr:w-full smlr:h-4/6 p-2 flex">
-        <div className="w-full h-full bg-white rounded-lg shadow-lg p-2">
+        <div className="w-full h-full bg-white rounded-lg shadow-lg p-2 overflow-auto">
           <h2 className="underline mb-5">
             Creating some random district names here
           </h2>
-          <div className="flex flex-col gap-2 text-blue-500">
+          <div className="bg-red-100 flex flex-col gap-2 text-blue-500 overflow-auto">
             {regionData.map((regionObj) => {
-              const { PROVINCE, DISTRICT } = regionObj;
+              const { PROVINCE, DISTRICT, YEAR, ZONE } = regionObj;
               return (
                 <Link
                   key={DISTRICT}
                   to={`summary/${DISTRICT}`}
                   onClick={() => tabAddFunc(DISTRICT)}
                 >
-                  {PROVINCE}:{DISTRICT}
+                  {PROVINCE} : {DISTRICT} : {YEAR} : {ZONE}
                 </Link>
               );
             })}
@@ -39,7 +40,7 @@ function HomePage(params) {
           Basic Info
         </div>
         <div className="bg-white w-full h-4/6 smlr:h-full smlr:w-4/6 rounded-lg shadow-lg p-2">
-          Province/Region List
+          <FilterButton />
         </div>
       </div>
     </section>
