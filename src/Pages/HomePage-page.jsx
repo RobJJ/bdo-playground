@@ -8,7 +8,6 @@ import FilterButtonClearAll from "../Components/FilterButtons/FilterButtonClearA
 //
 //
 function HomePage(params) {
-  console.log("HomePage Rendered!");
   //
   const { regionData, tabAddFunc, chosenYear, chosenProvince } =
     useGlobalContext();
