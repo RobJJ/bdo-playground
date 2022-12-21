@@ -86,9 +86,24 @@ const LineGraph = ({ summaryData }) => {
             payload={legendPayload}
             iconType="plainline"
           />
-          <Line type="monotone" dataKey="AIR_SCORE" stroke="#82ca9d" />
-          <Line type="monotone" dataKey="TEMP_SCORE" stroke="#8884d8" />
-          <Line type="monotone" dataKey="FOREST_SCORE" stroke="#ffc658" />
+          <Line
+            type="monotone"
+            dataKey="AIR_SCORE"
+            stroke="#82ca9d"
+            strokeWidth={2}
+          />
+          <Line
+            type="monotone"
+            dataKey="TEMP_SCORE"
+            stroke="#8884d8"
+            strokeWidth={2}
+          />
+          <Line
+            type="monotone"
+            dataKey="FOREST_SCORE"
+            stroke="#ffc658"
+            strokeWidth={2}
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>
