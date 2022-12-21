@@ -18,7 +18,7 @@ function SummaryPage(params) {
       <section className="w-4/6 h-full bg-blue-200 flex flex-col gap-2 p-2">
         {/* VISUAL DATA SECTION - LINE GRAPH */}
         <div className="bg-white w-full h-4/6 rounded-lg shadow-lg p-2 flex">
-          <LineGraph />
+          <LineGraph summaryData={districtData} />
         </div>
         {/* VISUAL DATA SECTION - BAR GRAPH const rounded = Math.round(float * 100) / 100; */}
         <div className="bg-white w-full h-2/6 rounded-lg shadow-lg p-2 flex flex-col gap-1 text-center">
