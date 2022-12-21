@@ -4,6 +4,7 @@ import { useGlobalContext } from "../Context-Reducer/Context";
 import FilterButtonYear from "../Components/FilterButtons/FilterButtonYear-component";
 import { v4 as uuidv4 } from "uuid";
 import FilterButtonProvince from "../Components/FilterButtons/FilterButtonProvince-component";
+import FilterButtonClearAll from "../Components/FilterButtons/FilterButtonClearAll-component";
 //
 //
 function HomePage(params) {
@@ -14,7 +15,9 @@ function HomePage(params) {
   const [filteredData, setFilteredData] = useState(regionData);
   //
   useEffect(() => {
-    if (!chosenYear && !chosenProvince) return;
+    if (!chosenYear && !chosenProvince) {
+      setFilteredData(regionData);
+    }
     // Set newFilteredData to all available Data
     let newFilteredData = regionData;
     // Filter the data based on year chosen option exists
@@ -66,6 +69,7 @@ function HomePage(params) {
         <div className="bg-white w-full h-4/6 smlr:h-full smlr:w-4/6 rounded-lg shadow-lg p-2">
           <FilterButtonYear />
           <FilterButtonProvince />
+          <FilterButtonClearAll />
         </div>
       </div>
     </section>
