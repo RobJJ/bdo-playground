@@ -10,12 +10,12 @@ import {
 } from "recharts";
 
 const data = [
-  { x: 10, y: 20, z: "boob" },
-  { x: 20, y: 80, z: "qq" },
-  { x: 40, y: 60, z: "ww" },
-  { x: 60, y: 70, z: "ee" },
-  { x: 80, y: 50, z: "rr" },
-  { x: 100, y: 40, z: "tt" },
+  { "Environment Score": 10, "Economic Score": 20, z: "boob" },
+  { "Environment Score": 20, "Economic Score": 80, z: "qq" },
+  { "Environment Score": 40, "Economic Score": 60, z: "ww" },
+  { "Environment Score": 60, "Economic Score": 70, z: "ee" },
+  { "Environment Score": 80, "Economic Score": 50, z: "rr" },
+  { "Environment Score": 100, "Economic Score": 40, z: "tt" },
 ];
 
 const ScatterGraph = () => {
@@ -41,7 +41,7 @@ const ScatterGraph = () => {
               offset: -10,
             }}
             type="number"
-            dataKey="x"
+            dataKey="Environment Score"
             ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
           />
 
@@ -51,11 +51,15 @@ const ScatterGraph = () => {
               angle: -90,
               position: "insideLeft",
             }}
-            dataKey="y"
+            dataKey="Economic Score"
             ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
           />
 
-          <Tooltip />
+          <Tooltip
+            wrapperStyle={{ border: "1px solid black" }}
+            contentStyle={{ backgroundColor: "rgba(201, 218, 255)" }}
+            separator=": "
+          />
           <Scatter fill="#8884d8" />
         </ScatterChart>
       </ResponsiveContainer>
