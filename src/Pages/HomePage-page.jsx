@@ -39,8 +39,8 @@ function HomePage(params) {
   return (
     <section className="bg-blue-100 w-full h-full p-2 flex smlr:flex-col gap-1 overflow-auto">
       {/* Graphs area */}
-      <div className="bg-blue-200 w-4/6 smlr:w-full smlr:h-4/6 p-2 flex">
-        <div className="w-full h-full bg-white rounded-lg shadow-lg p-2 overflow-auto">
+      <div className="bg-blue-200 w-4/6 smlr:w-full smlr:h-4/6 p-2 flex gap-2">
+        <div className=" h-full bg-white rounded-lg shadow-lg p-2 overflow-auto">
           <h2 className="underline mb-5">
             Creating some random district names here
           </h2>
@@ -59,8 +59,11 @@ function HomePage(params) {
             })}
           </div>
         </div>
+        <div className="w-full bg-white rounded-lg shadow-lg p-2">
+          Scatter Graph Part
+        </div>
       </div>
-      {/* Info area */}
+      {/* Info area - 2 pieces */}
       <div className="bg-blue-200 w-2/6 h-full smlr:w-full smlr:h-2/6 p-2 flex flex-col smlr:flex-row gap-2">
         <div className="bg-white w-full h-2/6 smlr:h-full smlr:w-2/6 rounded-lg shadow-lg p-2">
           Basic Info
