@@ -65,8 +65,8 @@ function SummaryPage(params) {
           />
         </div>
       </section>
-      <section className="w-2/6 h-full bg-blue-200 p-2">
-        <div className="w-full h-full bg-white shadow-lg rounded-lg p-2">
+      <section className="w-2/6 h-full bg-blue-200 p-2 flex flex-col gap-2">
+        <div className="w-full h-2/6 bg-white shadow-lg rounded-lg p-2">
           {districtData && (
             <div key={district} className="bg-blue-100 flex flex-col">
               <span>Region: {districtData[0].GEOGRAPHIC_REGION}</span>
@@ -74,6 +74,9 @@ function SummaryPage(params) {
               <span>District: {districtData[0].DISTRICT}</span>
             </div>
           )}
+        </div>
+        <div className="w-full h-full bg-white shadow-lg rounded-lg p-2">
+          <h2>Recommendation Cards</h2>
         </div>
       </section>
     </div>

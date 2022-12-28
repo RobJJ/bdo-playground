@@ -22,7 +22,7 @@ const BarWithShadedRegion = ({ label, icon, scoreLabel, percentage, data }) => {
   const style = {
     width: `${score}%`,
     backgroundColor: "#8884d8",
-    transition: "width 0.5s ease-in-out",
+    transition: "width 0.8s ease-in-out",
   };
 
   return (
