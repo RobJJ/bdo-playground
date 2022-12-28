@@ -36,19 +36,19 @@ const LineGraph = ({ summaryData }) => {
         });
         return newObj;
       });
-    console.log("From useEffect.. totalValues: ", totalValues);
+    // console.log("From useEffect.. totalValues: ", totalValues);
     setFilteredData(totalValues);
   }, [url]);
 
   //
-  const data = [
-    { year: 2018, "Air Quality": 50, Weather: 75, Deforestation: 25 },
-    { year: 2019, "Air Quality": 60, Weather: 80, Deforestation: 30 },
-    { year: 2020, "Air Quality": 70, Weather: 85, Deforestation: 35 },
-    { year: 2021, "Air Quality": 80, Weather: 90, Deforestation: 40 },
-  ];
+  // const data = [
+  //   { year: 2018, "Air Quality": 50, Weather: 75, Deforestation: 25 },
+  //   { year: 2019, "Air Quality": 60, Weather: 80, Deforestation: 30 },
+  //   { year: 2020, "Air Quality": 70, Weather: 85, Deforestation: 35 },
+  //   { year: 2021, "Air Quality": 80, Weather: 90, Deforestation: 40 },
+  // ];
   //
-  console.log(summaryData);
+  // console.log(summaryData);
   //
   // Custom values for the Legend
   const legendPayload = [
