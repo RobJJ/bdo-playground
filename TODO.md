@@ -1,9 +1,5 @@
 Components & Functionality to implement and test...
 .
-left off place:::
-Just got the tabBar up and running based on the data that we are using. Seems to be moving smoothly and using the url params to render the page and data.
-What we need to test now is using the zone and year data. Try and add some more objects to the test data and have multiple different years... then try add a filter button to that main page to filter by year and get the data to change. The province and district names shouldnt change.. but the zone and year should change... think of a way of how to implement this in a way that can be used in a filter button.... the tabbar and summary page should contain all the data?
-Once you have a larger data set and you have basic filtering enabled... try build out the summaryPage first.. It is much simplier but very important.
 .
 .
 conversion...

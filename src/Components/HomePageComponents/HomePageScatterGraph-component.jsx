@@ -1,4 +1,5 @@
 import React from "react";
+import CustomTooltip from "./CustomToolTip-component";
 import {
   ScatterChart,
   Scatter,
@@ -54,12 +55,7 @@ const ScatterGraph = () => {
             dataKey="Economic Score"
             ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
           />
-
-          <Tooltip
-            wrapperStyle={{ border: "1px solid black" }}
-            contentStyle={{ backgroundColor: "rgba(201, 218, 255)" }}
-            separator=": "
-          />
+          <Tooltip content={<CustomTooltip data={"District Data"} />} />
           <Scatter fill="#8884d8" />
         </ScatterChart>
       </ResponsiveContainer>
@@ -68,3 +64,10 @@ const ScatterGraph = () => {
 };
 
 export default ScatterGraph;
+//
+// Old Tooltip
+// <Tooltip
+//   wrapperStyle={{ border: "1px solid black" }}
+//   contentStyle={{ backgroundColor: "rgba(201, 218, 255)" }}
+//   separator=": "
+// />;
