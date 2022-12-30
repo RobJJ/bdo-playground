@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CustomTooltip from "./CustomToolTip-component";
 import {
   ScatterChart,
@@ -20,6 +20,9 @@ const data = [
 ];
 
 const ScatterGraph = () => {
+  //
+
+  //
   return (
     <div className="flex flex-col gap-2 h-full w-full items-center">
       <h2 className="underline">Scatter Graph Vietnam</h2>
@@ -55,7 +58,11 @@ const ScatterGraph = () => {
             dataKey="Economic Score"
             ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
           />
-          <Tooltip content={<CustomTooltip data={"District Data"} />} />
+          <Tooltip
+            content={<CustomTooltip data={"District Data"} />}
+            // trigger="click"
+            // trigger={booleanTest ? "click" : null}
+          />
           <Scatter fill="#8884d8" />
         </ScatterChart>
       </ResponsiveContainer>
