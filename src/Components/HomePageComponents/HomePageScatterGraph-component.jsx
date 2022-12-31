@@ -8,6 +8,7 @@ import {
   Tooltip,
   CartesianGrid,
   ResponsiveContainer,
+  ReferenceArea,
 } from "recharts";
 
 const data = [
@@ -62,6 +63,46 @@ const ScatterGraph = () => {
             content={<CustomTooltip data={"District Data"} />}
             // trigger="click"
             // trigger={booleanTest ? "click" : null}
+          />
+          <ReferenceArea
+            x1={0}
+            x2={50}
+            y1={0}
+            y2={50}
+            // stroke="#FF0000"
+            strokeOpacity={0.3}
+            fillOpacity={0.2}
+            fill="#FF0000"
+          />
+          <ReferenceArea
+            x1={0}
+            x2={50}
+            y1={50}
+            y2={100}
+            // stroke="#FF7300"
+            strokeOpacity={0.3}
+            fillOpacity={0.2}
+            fill="#FF7300"
+          />
+          <ReferenceArea
+            x1={50}
+            x2={100}
+            y1={0}
+            y2={50}
+            // stroke="#FF7300"
+            strokeOpacity={0.3}
+            fillOpacity={0.2}
+            fill="#FF7300"
+          />
+          <ReferenceArea
+            x1={50}
+            x2={100}
+            y1={50}
+            y2={100}
+            // stroke="#008000"
+            strokeOpacity={0.3}
+            fillOpacity={0.2}
+            fill="#008000"
           />
           <Scatter fill="#8884d8" />
         </ScatterChart>
