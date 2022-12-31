@@ -17,7 +17,7 @@ const data = [
   { "Environment Score": 40, "Economic Score": 60, z: "ww" },
   { "Environment Score": 60, "Economic Score": 70, z: "ee" },
   { "Environment Score": 80, "Economic Score": 50, z: "rr" },
-  { "Environment Score": 100, "Economic Score": 40, z: "tt" },
+  { "Environment Score": 92, "Economic Score": 40, z: "tt" },
 ];
 
 const ScatterGraph = () => {
@@ -44,6 +44,8 @@ const ScatterGraph = () => {
               value: "Environmental score",
               position: "insideBottom",
               offset: -10,
+              textDecoration: "underline",
+              fontWeight: "bold",
             }}
             type="number"
             dataKey="Environment Score"
@@ -55,6 +57,8 @@ const ScatterGraph = () => {
               value: "Economic Score",
               angle: -90,
               position: "insideLeft",
+              textDecoration: "underline",
+              fontWeight: "bold",
             }}
             dataKey="Economic Score"
             ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
