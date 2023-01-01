@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import FilterButtonProvince from "../Components/FilterButtons/FilterButtonProvince-component";
 import FilterButtonClearAll from "../Components/FilterButtons/FilterButtonClearAll-component";
 import ScatterGraph from "../Components/HomePageComponents/HomePageScatterGraph-component";
+import VietnamMap from "../Components/HomePageComponents/HomePageChoropleth-component";
 //
 //
 function HomePage(params) {
@@ -60,8 +61,9 @@ function HomePage(params) {
             })}
           </div>
         </div>
-        <div className="w-full bg-white rounded-lg shadow-lg p-2">
-          <ScatterGraph />
+        <div className="w-full bg-white rounded-lg shadow-lg p-2 ">
+          {/*<ScatterGraph />*/}
+          <VietnamMap />
         </div>
       </div>
       {/* Info area - 2 pieces */}

@@ -13,14 +13,10 @@ For example:
 - .
   .
   .
-
+  Aim for next session:
+  You have implemented the scatterchart , and most of the functionality is working well...we need to try see if we can use different data in our objects.. something that resembles what will be pulled through from the main data... think about how to structure this so that the data can be plotted and also the tooltip can give a detailed breakdown... can we add filter buttons to this chart and have it rerender when something changes...filters: year, region, province.. let the tooltip give the detailed breakdown of envr scores
   .
   .
-
-3.
-
-QUESTIONS:
-.
 
 **MAP VISUAL**
 Map on landing page will show the total scores as a range of colors, depending on their values. You should be able to view each score as a different version of the map.
@@ -28,6 +24,9 @@ The map will then have four different toggles to see the different performance o
 Also be able to filter these scores by year
 Filters: Year & 5 toggles
 .
+https://github.com/timwis/leaflet-choropleth/blob/gh-pages/examples/computed_values/demo.js
+https://gka.github.io/chroma.js/
+https://data.humdata.org/dataset/geoboundaries-admin-boundaries-for-viet-nam?
 .
 **SCATTER VISUAL**
 .
