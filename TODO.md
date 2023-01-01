@@ -27,6 +27,7 @@ Filters: Year & 5 toggles
 https://github.com/timwis/leaflet-choropleth/blob/gh-pages/examples/computed_values/demo.js
 https://gka.github.io/chroma.js/
 https://data.humdata.org/dataset/geoboundaries-admin-boundaries-for-viet-nam?
+https://colorbrewer2.org/#type=sequential&scheme=Reds&n=5
 .
 **SCATTER VISUAL**
 .

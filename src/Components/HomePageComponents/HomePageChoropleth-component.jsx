@@ -50,13 +50,9 @@ const VietnamMap = () => {
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png"
       />
-      <Marker position={[51.505, -0.09]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
+
       <ChildChoropleth />
     </MapContainer>
   );
@@ -65,3 +61,8 @@ const VietnamMap = () => {
 export default VietnamMap;
 //
 //
+// <Marker position={[51.505, -0.09]}>
+//   <Popup>
+//     A pretty CSS3 popup. <br /> Easily customizable.
+//   </Popup>
+// </Marker>;
