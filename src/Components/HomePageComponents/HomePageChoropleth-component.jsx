@@ -9,7 +9,8 @@ import {
   Marker,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { vietnamGeoJSON } from "../../RegionData/GeoJSON-vietnam"; // import GeoJSON data for Vietnam
+// import { vietnamGeoJSON } from "../../RegionData/GeoJSON-vietnam"; // import GeoJSON data for Vietnam
+import ChildChoropleth from "./HomePAgeChoroplethVietnam-component";
 
 const VietnamMap = () => {
   const defaultPosition = [16.06, 108.21];
@@ -56,7 +57,7 @@ const VietnamMap = () => {
           A pretty CSS3 popup. <br /> Easily customizable.
         </Popup>
       </Marker>
-      <GeoJSON data={vietnamGeoJSON}></GeoJSON>
+      <ChildChoropleth />
     </MapContainer>
   );
 };
