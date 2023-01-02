@@ -5,7 +5,9 @@ import {
   useMap,
   Popup,
   Marker,
+  Tooltip,
 } from "react-leaflet";
+import L from "leaflet";
 import { vietnamGeoJSON } from "../../RegionData/GeoJSON-vietnam"; // import GeoJSON data for Vietnam
 
 //
@@ -13,7 +15,7 @@ function ChildChoropleth(params) {
   // Highlight feature to use when user is mouseOver the province
   function highlightFeature(e) {
     var layer = e.target;
-
+    console.log("layer target: ", layer);
     layer.setStyle({
       weight: 5,
       color: "#666",
@@ -22,13 +24,22 @@ function ChildChoropleth(params) {
     });
 
     layer.bringToFront();
+    let options = {
+      // docs:https://leafletjs.com/reference.html#tooltip
+      offset: L.point(0, -30),
+      className: "underline text-blue-200 font-bold",
+    };
+    let popup = L.popup(options).setContent(layer.feature.properties.shapeName);
+    //feature.properties.shapeName
+    // let popupExample = "I am popup!";
+    layer.bindPopup(popup).openPopup();
+    // layer.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
   }
-  // Takes the
+  // Set the highlighted region back to default style
   function resetHighlight(e) {
     var layer = e.target;
     layer.setStyle({
       weight: 2,
-
       color: "white",
       dashArray: "3",
       fillOpacity: 0.7,
@@ -66,11 +77,13 @@ function ChildChoropleth(params) {
   }
   //
   return (
-    <GeoJSON
-      onEachFeature={onEachFeature}
-      style={style}
-      data={vietnamGeoJSON}
-    ></GeoJSON>
+    <>
+      <GeoJSON
+        onEachFeature={onEachFeature}
+        style={style}
+        data={vietnamGeoJSON}
+      ></GeoJSON>
+    </>
   );
 }
 //
