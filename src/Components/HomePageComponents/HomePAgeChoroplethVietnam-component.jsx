@@ -13,7 +13,10 @@ import { JSON_DATA } from "../../RegionData/JSON_DATA"; // green earth data
 //
 // function for changing Vietnam marking text to English plain
 function removeDiacritics(str) {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/Đ/g, "D");
 }
 //
 const data2021ZoneTotal = JSON_DATA.filter(
@@ -41,6 +44,18 @@ function ChildChoropleth(params) {
     console.log(plainText); // Output: Viet Nam
     const layerData = ALL_DISTRCITS.filter((obj) => obj.PROVINCE === plainText);
     const numberOfDistrcitsInProvince = layerData.length;
+    // Create Average ECON_SCORE for Province -
+    let econScores = 0;
+    let envScores = 0;
+    layerData.forEach((item) => {
+      econScores += item.ECON_SCORE;
+      envScores += item.ENVR_SCORE;
+    });
+    const averageEconScore = Math.round(
+      econScores / numberOfDistrcitsInProvince
+    );
+    const averageEnvScore = Math.round(envScores / numberOfDistrcitsInProvince);
+    // const averageEconScoreAcrossDistricts=
     console.log("layerData: ", layerData);
     // console.log("layer target: ", layer);
     layer.setStyle({
@@ -51,17 +66,19 @@ function ChildChoropleth(params) {
     });
 
     layer.bringToFront();
+    // customise the popup
     let options = {
       // docs:https://leafletjs.com/reference.html#tooltip
       offset: L.point(0, -30),
       className: "underline text-blue-200 font-bold",
     };
-    let content = `Province: ${layer.feature.properties.shapeName}</br>Districts: ${numberOfDistrcitsInProvince}`;
+    // content for popup
+    let content = `Province: ${layer.feature.properties.shapeName}</br>Districts: ${numberOfDistrcitsInProvince}</br>Econ Score: ${averageEconScore}</br>Env Score: ${averageEnvScore}`;
+    // create the popup
     let popup = L.popup(options).setContent(content);
     //feature.properties.shapeName
-    // let popupExample = "I am popup!";
+    // set the popup
     layer.bindPopup(popup).openPopup();
-    // layer.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
   }
   // Set the highlighted region back to default style
   function resetHighlight(e) {
