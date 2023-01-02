@@ -29,6 +29,9 @@ https://gka.github.io/chroma.js/
 https://data.humdata.org/dataset/geoboundaries-admin-boundaries-for-viet-nam?
 https://colorbrewer2.org/#type=sequential&scheme=Reds&n=5
 .
+https://leafletjs.com/examples/layers-control/
+https://leafletjs.com/examples/layers-control/example.html
+
 **SCATTER VISUAL**
 .
 .
