@@ -211,7 +211,7 @@ export const vietnamGeoJSON = {
         ],
       },
       properties: {
-        shapeName: "Bà Rịa–Vũng Tàu",
+        shapeName: "Bà Rịa-Vũng Tàu",
         Shape_Leng: 1.82973499976,
         Shape_Area: 0.137784291892,
         shapeISO: "VN-43",
@@ -4644,7 +4644,7 @@ export const vietnamGeoJSON = {
         ],
       },
       properties: {
-        shapeName: "Hà Nội\t",
+        shapeName: "Hà Nội",
         Shape_Leng: 3.45198093008,
         Shape_Area: 0.279241558538,
         shapeISO: "VN-HN",

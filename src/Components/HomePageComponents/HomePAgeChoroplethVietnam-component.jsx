@@ -40,6 +40,7 @@ function ChildChoropleth(params) {
   function highlightFeature(e) {
     var layer = e.target;
     const provinceName = layer.feature.properties.shapeName;
+    console.log(provinceName);
     const plainText = removeDiacritics(provinceName);
     console.log(plainText); // Output: Viet Nam
     const layerData = ALL_DISTRCITS.filter((obj) => obj.PROVINCE === plainText);
