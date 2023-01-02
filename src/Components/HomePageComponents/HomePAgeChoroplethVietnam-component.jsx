@@ -59,14 +59,17 @@ function ChildChoropleth(params) {
     // const averageEconScoreAcrossDistricts=
     console.log("layerData: ", layerData);
     // console.log("layer target: ", layer);
+    //
+    // STYLES FOR onMouseOver
     layer.setStyle({
       weight: 5,
       color: "#666",
       dashArray: "",
       fillOpacity: 0.7,
     });
-
     layer.bringToFront();
+    //
+    // POPUP
     // customise the popup
     let options = {
       // docs:https://leafletjs.com/reference.html#tooltip
@@ -81,7 +84,7 @@ function ChildChoropleth(params) {
     // set the popup
     layer.bindPopup(popup).openPopup();
   }
-  // Set the highlighted region back to default style
+  // Set the highlighted region back to default style: hover
   function resetHighlight(e) {
     var layer = e.target;
     layer.setStyle({
@@ -91,7 +94,7 @@ function ChildChoropleth(params) {
       fillOpacity: 0.7,
     });
   }
-  //
+  // hover
   function onEachFeature(feature, layer) {
     layer.on({
       mouseover: highlightFeature,
@@ -100,20 +103,48 @@ function ChildChoropleth(params) {
     });
   }
 
-  // Function take a prop from data obj and determines color, we use this color to show differences on the map layer
+  // set color for geoLayer based on input
   function getColor(d) {
-    if (d === "Polygon") {
-      return "#800026";
-    } else {
-      return "#BD0026";
-    }
+    return d > 75
+      ? "#005a32"
+      : d > 65
+      ? "#238b45"
+      : d > 55
+      ? "#41ab5d"
+      : d > 45
+      ? "#74c476"
+      : d > 35
+      ? "#a1d99b"
+      : d > 25
+      ? "#c7e9c0"
+      : d > 15
+      ? "#edf8e9"
+      : "#FFEDA0";
   }
+  // #edf8e9
+  // #c7e9c0
+  // #a1d99b
+  // #74c476
+  // #41ab5d
+  // #238b45
+  // #005a32
   //
   // A function that returns an object containing styles
   // Using it for GeoJSON
   function style(feature) {
+    const provinceName = removeDiacritics(feature.properties.shapeName);
+    const layerData = ALL_DISTRCITS.filter(
+      (obj) => obj.PROVINCE === provinceName
+    );
+    const numberOfDistrcitsInProvince = layerData.length;
+    let envScores = 0;
+    layerData.forEach((item) => {
+      envScores += item.ENVR_SCORE;
+    });
+
+    const averageEnvScore = Math.round(envScores / numberOfDistrcitsInProvince);
     return {
-      fillColor: getColor(feature.geometry.type),
+      fillColor: getColor(averageEnvScore),
       weight: 2,
       opacity: 1,
       color: "white",
@@ -134,3 +165,5 @@ function ChildChoropleth(params) {
 }
 //
 export default ChildChoropleth;
+
+// This function needs to be cleaned up... there are a lot of repeating functions that need to be encapsulated in their own functions.
