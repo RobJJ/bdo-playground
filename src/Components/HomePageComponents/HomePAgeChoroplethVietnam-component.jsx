@@ -9,13 +9,40 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import { vietnamGeoJSON } from "../../RegionData/GeoJSON-vietnam"; // import GeoJSON data for Vietnam
-
+import { JSON_DATA } from "../../RegionData/JSON_DATA"; // green earth data
+//
+// function for changing Vietnam marking text to English plain
+function removeDiacritics(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+//
+const data2021ZoneTotal = JSON_DATA.filter(
+  (obj) => obj.YEAR === 2021 && obj.ZONE === "total"
+);
+// contains all the objects that have 2021 and 'total'
+// console.log(data2021ZoneTotal);
+//
+// An array of the Districts: 2021: total
+const ALL_DISTRCITS = [];
+data2021ZoneTotal.forEach((obj) => {
+  const included = ALL_DISTRCITS.find((data) => data.DISTRICT === obj.DISTRICT);
+  if (!included) {
+    ALL_DISTRCITS.push({ ...obj });
+  } else return;
+});
+// console.log(ALL_DISTRCITS);
 //
 function ChildChoropleth(params) {
   // Highlight feature to use when user is mouseOver the province
   function highlightFeature(e) {
     var layer = e.target;
-    console.log("layer target: ", layer);
+    const provinceName = layer.feature.properties.shapeName;
+    const plainText = removeDiacritics(provinceName);
+    console.log(plainText); // Output: Viet Nam
+    const layerData = ALL_DISTRCITS.filter((obj) => obj.PROVINCE === plainText);
+    const numberOfDistrcitsInProvince = layerData.length;
+    console.log("layerData: ", layerData);
+    // console.log("layer target: ", layer);
     layer.setStyle({
       weight: 5,
       color: "#666",
@@ -29,7 +56,8 @@ function ChildChoropleth(params) {
       offset: L.point(0, -30),
       className: "underline text-blue-200 font-bold",
     };
-    let popup = L.popup(options).setContent(layer.feature.properties.shapeName);
+    let content = `Province: ${layer.feature.properties.shapeName}</br>Districts: ${numberOfDistrcitsInProvince}`;
+    let popup = L.popup(options).setContent(content);
     //feature.properties.shapeName
     // let popupExample = "I am popup!";
     layer.bindPopup(popup).openPopup();
