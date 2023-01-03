@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
   ReferenceArea,
 } from "recharts";
+import MapTypeToggle from "./HomePageChoroplethControl-component";
 
 const data = [
   { "Environment Score": 10, "Economic Score": 20, z: "boob" },
@@ -20,13 +21,16 @@ const data = [
   { "Environment Score": 92, "Economic Score": 40, z: "tt" },
 ];
 
-const ScatterGraph = () => {
+const ScatterGraph = ({ toggle }) => {
   //
 
   //
   return (
     <div className="flex flex-col gap-2 h-full w-full items-center">
-      <h2 className="underline">Scatter Graph Vietnam</h2>
+      <div className="absolute">
+        <h2 className="underline">Scatter Graph Vietnam</h2>
+        <MapTypeToggle current={"scatter"} toggle={toggle} />
+      </div>
 
       <ResponsiveContainer className="w-full h-full">
         <ScatterChart

@@ -14,7 +14,11 @@ function HomePage(params) {
   const { regionData, tabAddFunc, chosenYear, chosenProvince } =
     useGlobalContext();
   const [filteredData, setFilteredData] = useState(regionData);
+  const [choice, setChoice] = useState("map");
   //
+  const toggleMapChoice = (type) => {
+    setChoice(type);
+  };
   useEffect(() => {
     if (!chosenYear && !chosenProvince) {
       setFilteredData(regionData);
@@ -63,7 +67,8 @@ function HomePage(params) {
         </div>
         <div className="w-full bg-white rounded-lg shadow-lg p-2">
           {/*<ScatterGraph /> or <VietnamMap /> rendered based on choice*/}
-          <VietnamMap />
+          {choice === "map" && <VietnamMap toggle={toggleMapChoice} />}
+          {choice === "scatter" && <ScatterGraph toggle={toggleMapChoice} />}
         </div>
       </div>
       {/* Info area - 2 pieces */}

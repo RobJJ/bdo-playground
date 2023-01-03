@@ -11,9 +11,9 @@ import {
 import "leaflet/dist/leaflet.css";
 // import { vietnamGeoJSON } from "../../RegionData/GeoJSON-vietnam"; // import GeoJSON data for Vietnam
 import ChildChoropleth from "./HomePAgeChoroplethVietnam-component";
-import ChoroControl from "./HomePageChoroplethControl-component";
+import MapTypeToggle from "./HomePageChoroplethControl-component";
 
-const VietnamMap = () => {
+const VietnamMap = ({ toggle }) => {
   const defaultPosition = [16.06, 108.21];
   //
 
@@ -30,7 +30,7 @@ const VietnamMap = () => {
       />
 
       <ChildChoropleth />
-      <ChoroControl />
+      <MapTypeToggle current={"map"} toggle={toggle} />
     </MapContainer>
   );
 };
