@@ -31,7 +31,7 @@ https://colorbrewer2.org/#type=sequential&scheme=Reds&n=5
 .
 https://leafletjs.com/examples/layers-control/
 https://leafletjs.com/examples/layers-control/example.html
-
+https://leafletjs.com/reference.html#tooltip
 **SCATTER VISUAL**
 .
 .

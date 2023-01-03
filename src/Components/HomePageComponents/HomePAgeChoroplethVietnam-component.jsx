@@ -40,9 +40,9 @@ function ChildChoropleth(params) {
   function highlightFeature(e) {
     var layer = e.target;
     const provinceName = layer.feature.properties.shapeName;
-    console.log(provinceName);
+    // console.log(provinceName);
     const plainText = removeDiacritics(provinceName);
-    console.log(plainText); // Output: Viet Nam
+    // console.log(plainText); // Output: Viet Nam
     const layerData = ALL_DISTRCITS.filter((obj) => obj.PROVINCE === plainText);
     const numberOfDistrcitsInProvince = layerData.length;
     // Create Average ECON_SCORE for Province -
@@ -57,7 +57,7 @@ function ChildChoropleth(params) {
     );
     const averageEnvScore = Math.round(envScores / numberOfDistrcitsInProvince);
     // const averageEconScoreAcrossDistricts=
-    console.log("layerData: ", layerData);
+    // console.log("layerData: ", layerData);
     // console.log("layer target: ", layer);
     //
     // STYLES FOR onMouseOver
@@ -121,13 +121,6 @@ function ChildChoropleth(params) {
       ? "#edf8e9"
       : "#FFEDA0";
   }
-  // #edf8e9
-  // #c7e9c0
-  // #a1d99b
-  // #74c476
-  // #41ab5d
-  // #238b45
-  // #005a32
   //
   // A function that returns an object containing styles
   // Using it for GeoJSON

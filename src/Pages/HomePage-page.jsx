@@ -61,8 +61,8 @@ function HomePage(params) {
             })}
           </div>
         </div>
-        <div className="w-full bg-white rounded-lg shadow-lg p-2 ">
-          {/*<ScatterGraph />*/}
+        <div className="w-full bg-white rounded-lg shadow-lg p-2">
+          {/*<ScatterGraph /> or <VietnamMap /> rendered based on choice*/}
           <VietnamMap />
         </div>
       </div>

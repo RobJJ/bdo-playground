@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from "react";
-import L from "leaflet";
+import L, { Control } from "leaflet";
 import {
   MapContainer,
   TileLayer,
-  GeoJSON,
+  LayersControl,
   useMap,
   Popup,
   Marker,
@@ -11,35 +11,11 @@ import {
 import "leaflet/dist/leaflet.css";
 // import { vietnamGeoJSON } from "../../RegionData/GeoJSON-vietnam"; // import GeoJSON data for Vietnam
 import ChildChoropleth from "./HomePAgeChoroplethVietnam-component";
+import ChoroControl from "./HomePageChoroplethControl-component";
 
 const VietnamMap = () => {
   const defaultPosition = [16.06, 108.21];
-
-  //   const mapTest = useMap();
-  //   console.log("map center:", mapTest);
-  //   const mapRef = useRef();
-
-  //   useEffect(() => {
-  //     // Set the style for each province
-  //     const style = (feature) => {
-  //       return {
-  //         fillColor: "#ff0000", // set the fill color to red
-  //         weight: 1,
-  //         opacity: 1,
-  //         color: "#000000", // set the outline color to black
-  //         dashArray: "3",
-  //         fillOpacity: 0.7,
-  //       };
-  //     };
-
-  //     // Add the GeoJSON layer to the map
-  //     const geojson = L.geoJSON(vietnamGeoJSON, {
-  //       style: style,
-  //     }).addTo(mapRef.current.leafletElement);
-
-  //     // Zoom the map to fit the bounds of the GeoJSON layer
-  //     mapRef.current.leafletElement.fitBounds(geojson.getBounds());
-  //   }, []); // only run this effect once when the component mounts
+  //
 
   return (
     <MapContainer
@@ -54,6 +30,7 @@ const VietnamMap = () => {
       />
 
       <ChildChoropleth />
+      <ChoroControl />
     </MapContainer>
   );
 };
