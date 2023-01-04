@@ -21,8 +21,8 @@ function MapTypeToggle({ toggle, current }) {
         onClick={handleToggleChoice}
         data-tag="map"
         className={`${
-          current === "map" ? "bg-slate-500 text-white" : "bg-white"
-        } z-[2000] text-lg p-1 rounded-l-lg`}
+          current === "map" ? "bg-slate-500 text-white" : "bg-[#f5f5f5]"
+        } z-[2000] text-base p-1 rounded-l-lg`}
       >
         Regional Map
       </button>
@@ -30,8 +30,8 @@ function MapTypeToggle({ toggle, current }) {
         onClick={handleToggleChoice}
         data-tag="scatter"
         className={`${
-          current === "scatter" ? "bg-slate-500 text-white" : "bg-white"
-        } z-[2000] text-lg p-1 rounded-r-lg`}
+          current === "scatter" ? "bg-slate-500 text-white" : "bg-[#f5f5f5]"
+        } z-[2000] text-base p-1 rounded-r-lg`}
       >
         Scatter Map
       </button>
