@@ -13,7 +13,7 @@ import "leaflet/dist/leaflet.css";
 import ChildChoropleth from "./HomePAgeChoroplethVietnam-component";
 import MapTypeToggle from "./HomePageChoroplethControl-component";
 
-const VietnamMap = ({ toggle }) => {
+const VietnamMap = ({ toggle, current }) => {
   const defaultPosition = [16.06, 108.21];
   //
 
@@ -30,7 +30,7 @@ const VietnamMap = ({ toggle }) => {
       />
 
       <ChildChoropleth />
-      <MapTypeToggle current={"map"} toggle={toggle} />
+      <MapTypeToggle current={current} toggle={toggle} />
     </MapContainer>
   );
 };

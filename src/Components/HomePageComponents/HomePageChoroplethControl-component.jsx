@@ -5,30 +5,33 @@ import L from "leaflet";
 
 function MapTypeToggle({ toggle, current }) {
   //
-  const handleToggleChoice = () => {
-    if (current === "map") {
+  const handleToggleChoice = (e) => {
+    let selected = e.target.dataset.tag;
+    if (current === "map" && selected === "scatter") {
       toggle("scatter");
     }
-    if (current === "scatter") {
+    if (current === "scatter" && selected === "map") {
       toggle("map");
     }
   };
 
   return (
-    <div className="flex absolute top-0 right-0">
+    <div className="flex absolute top-0 right-0 rounded-lg">
       <button
         onClick={handleToggleChoice}
+        data-tag="map"
         className={`${
           current === "map" ? "bg-slate-500 text-white" : "bg-white"
-        } z-[2000] text-lg p-1`}
+        } z-[2000] text-lg p-1 rounded-l-lg`}
       >
         Regional Map
       </button>
       <button
         onClick={handleToggleChoice}
+        data-tag="scatter"
         className={`${
           current === "scatter" ? "bg-slate-500 text-white" : "bg-white"
-        } z-[2000] text-lg p-1`}
+        } z-[2000] text-lg p-1 rounded-r-lg`}
       >
         Scatter Map
       </button>

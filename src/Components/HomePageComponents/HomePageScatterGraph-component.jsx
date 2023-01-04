@@ -21,7 +21,7 @@ const data = [
   { "Environment Score": 92, "Economic Score": 40, z: "tt" },
 ];
 
-const ScatterGraph = ({ toggle }) => {
+const ScatterGraph = ({ toggle, current }) => {
   //
 
   //
@@ -29,7 +29,7 @@ const ScatterGraph = ({ toggle }) => {
     <div className="flex flex-col gap-2 h-full w-full items-center ">
       <div className=" relative w-full">
         <h2 className="underline text-center">Scatter Graph Vietnam</h2>
-        <MapTypeToggle current={"scatter"} toggle={toggle} />
+        <MapTypeToggle current={current} toggle={toggle} />
       </div>
 
       <ResponsiveContainer className="w-full h-full">
