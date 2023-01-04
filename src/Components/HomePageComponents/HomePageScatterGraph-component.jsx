@@ -26,9 +26,9 @@ const ScatterGraph = ({ toggle }) => {
 
   //
   return (
-    <div className="flex flex-col gap-2 h-full w-full items-center">
-      <div className="absolute">
-        <h2 className="underline">Scatter Graph Vietnam</h2>
+    <div className="flex flex-col gap-2 h-full w-full items-center ">
+      <div className=" relative w-full">
+        <h2 className="underline text-center">Scatter Graph Vietnam</h2>
         <MapTypeToggle current={"scatter"} toggle={toggle} />
       </div>
 

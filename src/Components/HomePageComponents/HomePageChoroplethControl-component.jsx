@@ -15,12 +15,24 @@ function MapTypeToggle({ toggle, current }) {
   };
 
   return (
-    <button
-      onClick={handleToggleChoice}
-      className="z-[2000] absolute top-0 right-0 text-xl p-2 m-2 bg-white rounded-lg border-black border-2"
-    >
-      <div>Toggle</div>
-    </button>
+    <div className="flex absolute top-0 right-0">
+      <button
+        onClick={handleToggleChoice}
+        className={`${
+          current === "map" ? "bg-slate-500 text-white" : "bg-white"
+        } z-[2000] text-lg p-1`}
+      >
+        Regional Map
+      </button>
+      <button
+        onClick={handleToggleChoice}
+        className={`${
+          current === "scatter" ? "bg-slate-500 text-white" : "bg-white"
+        } z-[2000] text-lg p-1`}
+      >
+        Scatter Map
+      </button>
+    </div>
   );
 }
 //

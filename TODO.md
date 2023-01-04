@@ -1,6 +1,7 @@
 Components & Functionality to implement and test...
 .
-.
+helpful info
+https://tmsvr.com/react-leaflet-map-performance-issues/
 .
 conversion...
 using: https://csvjson.com/csv2json
