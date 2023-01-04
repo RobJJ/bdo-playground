@@ -16,7 +16,7 @@ function MapTypeToggle({ toggle, current }) {
   };
 
   return (
-    <div className="flex absolute top-0 right-0 rounded-lg">
+    <div className="flex absolute top-0 right-0 rounded-lg z-[2000] ">
       <button
         onClick={handleToggleChoice}
         data-tag="map"

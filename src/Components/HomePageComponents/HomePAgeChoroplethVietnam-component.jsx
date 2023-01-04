@@ -11,6 +11,26 @@ import L from "leaflet";
 import { vietnamGeoJSON } from "../../RegionData/GeoJSON-vietnam"; // import GeoJSON data for Vietnam
 import { JSON_DATA } from "../../RegionData/JSON_DATA"; // green earth data
 //
+export const MAP_COLORS = [
+  { color: "#005a32", range: 75 },
+  { color: "#238b45", range: 65 },
+  { color: "#41ab5d", range: 55 },
+  { color: "#74c476", range: 45 },
+  { color: "#a1d99b", range: 35 },
+  { color: "#c7e9c0", range: 25 },
+  { color: "#edf8e9", range: 15 },
+  { color: "#FFEDA0", range: 0 },
+];
+// export const MAP_COLORS = {
+//   COLOR_ONE: "#005a32",
+//   COLOR_TWO: "#238b45",
+//   COLOR_THREE: "#41ab5d",
+//   COLOR_FOUR: "#74c476",
+//   COLOR_FIVE: "#a1d99b",
+//   COLOR_SIX: "#c7e9c0",
+//   COLOR_SEVEN: "#edf8e9",
+//   COLOR_EIGHT: "#FFEDA0",
+// };
 // function for changing Vietnam marking text to English plain
 function removeDiacritics(str) {
   return str
@@ -106,20 +126,20 @@ function ChildChoropleth(params) {
   // set color for geoLayer based on input
   function getColor(d) {
     return d > 75
-      ? "#005a32"
+      ? MAP_COLORS[0].color
       : d > 65
-      ? "#238b45"
+      ? MAP_COLORS[1].color
       : d > 55
-      ? "#41ab5d"
+      ? MAP_COLORS[2].color
       : d > 45
-      ? "#74c476"
+      ? MAP_COLORS[3].color
       : d > 35
-      ? "#a1d99b"
+      ? MAP_COLORS[4].color
       : d > 25
-      ? "#c7e9c0"
+      ? MAP_COLORS[5].color
       : d > 15
-      ? "#edf8e9"
-      : "#FFEDA0";
+      ? MAP_COLORS[6].color
+      : MAP_COLORS[7].color;
   }
   //
   // A function that returns an object containing styles
