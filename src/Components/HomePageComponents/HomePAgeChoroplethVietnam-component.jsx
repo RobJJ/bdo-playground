@@ -10,16 +10,27 @@ import {
 import L from "leaflet";
 import { vietnamGeoJSON } from "../../RegionData/GeoJSON-vietnam"; // import GeoJSON data for Vietnam
 import { JSON_DATA } from "../../RegionData/JSON_DATA"; // green earth data
+import { useGlobalContext } from "../../Context-Reducer/Context";
 //
-export const MAP_COLORS = [
+export const MAP_COLORS_ENV = [
   { color: "#005a32", range: 75 },
   { color: "#238b45", range: 65 },
   { color: "#41ab5d", range: 55 },
   { color: "#74c476", range: 45 },
   { color: "#a1d99b", range: 35 },
   { color: "#c7e9c0", range: 25 },
-  { color: "#edf8e9", range: 15 },
-  { color: "#FFEDA0", range: 0 },
+  { color: "#e5f5e0", range: 15 },
+  { color: "#f7fcf5", range: 0 },
+];
+export const MAP_COLORS_ECON = [
+  { color: "#084594", range: 75 },
+  { color: "#2171b5", range: 65 },
+  { color: "#4292c6", range: 55 },
+  { color: "#6baed6", range: 45 },
+  { color: "#9ecae1", range: 35 },
+  { color: "#c6dbef", range: 25 },
+  { color: "#deebf7", range: 15 },
+  { color: "#f7fbff", range: 0 },
 ];
 // export const MAP_COLORS = {
 //   COLOR_ONE: "#005a32",
@@ -58,6 +69,8 @@ data2021ZoneTotal.forEach((obj) => {
 // console.log(ALL_DISTRCITS);
 //
 function ChildChoropleth(params) {
+  // Bring in the layerType to determine color schema
+  const { layerType } = useGlobalContext();
   // Highlight feature to use when user is mouseOver the province
   function highlightFeature(e) {
     var layer = e.target;
@@ -84,7 +97,7 @@ function ChildChoropleth(params) {
     //
     // STYLES FOR onMouseOver
     layer.setStyle({
-      weight: 5,
+      weight: 3,
       color: "#666",
       dashArray: "",
       fillOpacity: 0.7,
@@ -127,21 +140,40 @@ function ChildChoropleth(params) {
 
   // set color for geoLayer based on input
   function getColor(d) {
-    return d > 75
-      ? MAP_COLORS[0].color
-      : d > 65
-      ? MAP_COLORS[1].color
-      : d > 55
-      ? MAP_COLORS[2].color
-      : d > 45
-      ? MAP_COLORS[3].color
-      : d > 35
-      ? MAP_COLORS[4].color
-      : d > 25
-      ? MAP_COLORS[5].color
-      : d > 15
-      ? MAP_COLORS[6].color
-      : MAP_COLORS[7].color;
+    if (layerType === "env") {
+      return d > 75
+        ? MAP_COLORS_ENV[0].color
+        : d > 65
+        ? MAP_COLORS_ENV[1].color
+        : d > 55
+        ? MAP_COLORS_ENV[2].color
+        : d > 45
+        ? MAP_COLORS_ENV[3].color
+        : d > 35
+        ? MAP_COLORS_ENV[4].color
+        : d > 25
+        ? MAP_COLORS_ENV[5].color
+        : d > 15
+        ? MAP_COLORS_ENV[6].color
+        : MAP_COLORS_ENV[7].color;
+    }
+    if (layerType === "econ") {
+      return d > 75
+        ? MAP_COLORS_ECON[0].color
+        : d > 65
+        ? MAP_COLORS_ECON[1].color
+        : d > 55
+        ? MAP_COLORS_ECON[2].color
+        : d > 45
+        ? MAP_COLORS_ECON[3].color
+        : d > 35
+        ? MAP_COLORS_ECON[4].color
+        : d > 25
+        ? MAP_COLORS_ECON[5].color
+        : d > 15
+        ? MAP_COLORS_ECON[6].color
+        : MAP_COLORS_ECON[7].color;
+    }
   }
   //
   // A function that returns an object containing styles
@@ -164,7 +196,10 @@ function ChildChoropleth(params) {
       econScores / numberOfDistrcitsInProvince
     );
     return {
-      fillColor: getColor(averageEnvScore),
+      fillColor:
+        layerType === "env"
+          ? getColor(averageEnvScore)
+          : getColor(averageEconScore),
       weight: 2,
       opacity: 1,
       color: "white",
