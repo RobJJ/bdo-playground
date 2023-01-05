@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CustomTooltip from "./CustomToolTip-component";
 import {
   ScatterChart,
@@ -15,7 +15,7 @@ import MapTypeToggle from "./HomePageChoroplethControl-component";
 import TestDiv from "./HomePageScatterTest-component";
 import { JSON_DATA } from "../../RegionData/JSON_DATA"; // green earth data
 
-const data = [
+const dataOld = [
   { "Environment Score": 10.52, "Economic Score": 20.87, z: "boob" },
   { "Environment Score": 20, "Economic Score": 80, z: "qq" },
   { "Environment Score": 40, "Economic Score": 60, z: "ww" },
@@ -49,6 +49,7 @@ const districtDataForScatter = ALL_DISTRCITS.map((district) => {
 });
 // console.log(districtDataForScatter);
 //
+console.log("called each time??");
 // Custom dot for ScatterGraph
 const RenderDot = ({ cx, cy }) => {
   return <Dot cx={cx} cy={cy} fill="blue" r={2} />;
@@ -57,7 +58,13 @@ const RenderDot = ({ cx, cy }) => {
 // Main Component
 const ScatterGraph = ({ toggle, current }) => {
   //
+  const [data, setData] = useState([]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setData(districtDataForScatter);
+    }, 1000);
+  }, []);
   //
   return (
     <div className="flex flex-col gap-2 h-full w-full items-center ">
@@ -70,9 +77,10 @@ const ScatterGraph = ({ toggle, current }) => {
       </div>
       {/* <TestDiv /> */}
       {/* Scatter Graph Section */}
+
       <ResponsiveContainer className="w-full h-full">
         <ScatterChart
-          data={districtDataForScatter}
+          data={data}
           margin={{
             top: 5,
             right: 30,

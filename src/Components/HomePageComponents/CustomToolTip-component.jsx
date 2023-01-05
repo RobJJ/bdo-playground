@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 function CustomTooltip({ active, payload, label, data }) {
   //
   //   console.log(active);
-  console.log("Data: ", data);
-  console.log("Payload: ", payload);
-  console.log("Active: ", active);
+  // console.log("Data: ", data);
+  // console.log("Payload: ", payload);
+  // console.log("Active: ", active);
 
   //
   const randomTestFunc = () => {
