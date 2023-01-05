@@ -48,8 +48,10 @@ const data2021ZoneTotal = JSON_DATA.filter(
 // An array of the Districts: 2021: total
 const ALL_DISTRCITS = [];
 data2021ZoneTotal.forEach((obj) => {
-  const included = ALL_DISTRCITS.find((data) => data.DISTRICT === obj.DISTRICT);
-  if (!included) {
+  const isIncluded = ALL_DISTRCITS.find(
+    (data) => data.DISTRICT === obj.DISTRICT
+  );
+  if (!isIncluded) {
     ALL_DISTRCITS.push({ ...obj });
   } else return;
 });

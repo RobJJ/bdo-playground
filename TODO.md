@@ -12,12 +12,21 @@ For example:
 
 - A country, regional, provincial average for scores each year
 - .
+- Implement the list of provinces/district on the HomePage component
   .
+  Implement real data for the scatter. Start just by showing the province data on scatter, and then implement the district data for a selected province
   .
   Aim for next session:
-  You have implemented the scatterchart , and most of the functionality is working well...we need to try see if we can use different data in our objects.. something that resembles what will be pulled through from the main data... think about how to structure this so that the data can be plotted and also the tooltip can give a detailed breakdown... can we add filter buttons to this chart and have it rerender when something changes...filters: year, region, province.. let the tooltip give the detailed breakdown of envr scores
-  .
-  .
+  HomePageMap ---
+
+  See if you can change the scrolling in and out to something smooth and not in steps?
+  /adjust the popup panel, try play with the setting to make the experience easier. I think positioned fixed on right side is perfect. Try implement a onClick, on pauses the onMouse over affect so the user can navigate to the panel and interact. Give the user the ability then to show districts - this will activite a zoom/focus to a location preset on map and display its districts
+  New Idea:: could you change the onMouse over function to accept a much larger one that handles more tasks?
+  For example.. the onMouseOver affect when hovering over provinces, displays a panel showing information, but also a small neat popup that says the Province name and explore button.. this simple button will then render the districts of that area... make it reversable affect by displaying a small card on the top left that you can close and it then closes the districts for that province... this would be a very dope way for the user to interact!
+  Add ability on the popup panel to view districts in a displayPanel component. Let this displayPanel component also used by a learn more button on the scores ? something to be used here
+
+  Give the map the ability to show the economic color shading aswell.. Map it toggleable? may a small extra panel under the -Regional Map- button ?... could be a cool way to show the two different sets of data...use blue for economic shades and update the legend.
+  Another good idea....Use the <BasicInfoComponent> to display information about the province when you click it.. Show its averages over the years... bar graph? can show a rise or fall in scores...
 
 **MAP VISUAL**
 Map on landing page will show the total scores as a range of colors, depending on their values. You should be able to view each score as a different version of the map.
@@ -47,8 +56,9 @@ https://leafletjs.com/reference.html#tooltip
 Questions for the team:
 
 1. HomePage-Graphs: We need to clarify what the user experience is going to be for the Homepage charts, especially what filters they are able to use and how that impacts what they see and what they understand about the data. It is very confusing for a user to have multiple envr filters unless its very clear about what the graph is showing and how those scores have been calculated....
-2. HomePage-Regions: If I list the regions here, what scores are actually been showns here? The zone:'total', year: 2021 ?? Does the user know this? I think these filters and years data should be something that is used on the summary page, or used in a limited way on the HomePage....
-3. HomePage-Overall : I need the overall data summary stuff for the homePage.. ie, the populations breakdowns etc... use Dummy??
+
+2. HomePage-Region-List: If I list the regions here, what scores are actually been showns here? The zone:'total', year: 2021 ?? Does the user know this? I think these filters and years data should be something that is used on the summary page, or used in a limited way on the HomePage....
+3. HomePage-Overall-cards : I need the overall data summary stuff for the homePage.. ie, the populations breakdowns etc... use Dummy??
 4. SummaryPage-Overall: I need the data for the section of overall Data. use Dummy?
 5. SummaryPage-Recommendations: How will we generate this data? Based off a sliding scale? Or should we try implement something clever here using the AI?
 6. SummaryPage-LineGraph: Do you want to include the economic score here? Seems like it could be useful to add next to the Envr scores...
