@@ -12,8 +12,8 @@ function ChoroLegend(params) {
   //
   //
   return (
-    <div className="absolute bottom-0 left-0 flex z-[2000] m-1">
-      <div className="bg-[#f5f5f5] flex flex-col p-1 rounded-lg">
+    <div className="absolute bottom-0 left-0 bg-[#f5f5f5] rounded-lg flex flex-col z-[2000] m-1">
+      <div className=" flex flex-col p-1 ">
         {MAP_COLORS.map((ele, idx, arr) => {
           let colorUsed = MAP_COLORS[mapColorsLength - idx - 1].color;
           // console.log("Index:", idx, "Color:", colorUsed);

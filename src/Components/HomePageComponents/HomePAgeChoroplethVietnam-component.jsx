@@ -153,11 +153,16 @@ function ChildChoropleth(params) {
     );
     const numberOfDistrcitsInProvince = layerData.length;
     let envScores = 0;
+    let econScores = 0;
     layerData.forEach((item) => {
       envScores += item.ENVR_SCORE;
+      econScores += item.ECON_SCORE;
     });
 
     const averageEnvScore = Math.round(envScores / numberOfDistrcitsInProvince);
+    const averageEconScore = Math.round(
+      econScores / numberOfDistrcitsInProvince
+    );
     return {
       fillColor: getColor(averageEnvScore),
       weight: 2,

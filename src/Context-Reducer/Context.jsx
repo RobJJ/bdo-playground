@@ -19,6 +19,8 @@ const AppProvider = ({ children }) => {
   const [chosenYear, setChosenYear] = useState(false);
   const [chosenProvince, setChosenProvince] = useState(false);
   //
+  // A layerType for environment vs economic choice
+  const [layerType, setLayerType] = useState("env");
   //
   const tabAddFunc = (districtName) => {
     // Do check to see if distrcit is already in tabBar state
@@ -42,6 +44,8 @@ const AppProvider = ({ children }) => {
         setChosenYear,
         chosenProvince,
         setChosenProvince,
+        layerType,
+        setLayerType,
       }}
     >
       {children}
