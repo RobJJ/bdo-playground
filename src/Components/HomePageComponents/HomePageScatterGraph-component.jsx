@@ -9,17 +9,38 @@ import {
   CartesianGrid,
   ResponsiveContainer,
   ReferenceArea,
+  Dot,
 } from "recharts";
 import MapTypeToggle from "./HomePageChoroplethControl-component";
+import TestDiv from "./HomePageScatterTest-component";
+import { JSON_DATA } from "../../RegionData/JSON_DATA"; // green earth data
 
 const data = [
-  { "Environment Score": 10, "Economic Score": 20, z: "boob" },
+  { "Environment Score": 10.52, "Economic Score": 20.87, z: "boob" },
   { "Environment Score": 20, "Economic Score": 80, z: "qq" },
   { "Environment Score": 40, "Economic Score": 60, z: "ww" },
   { "Environment Score": 60, "Economic Score": 70, z: "ee" },
   { "Environment Score": 80, "Economic Score": 50, z: "rr" },
   { "Environment Score": 92, "Economic Score": 40, z: "tt" },
 ];
+// 2021 total data filtered
+const data2021ZoneTotal = JSON_DATA.filter(
+  (obj) => obj.YEAR === 2021 && obj.ZONE === "total"
+);
+// An array of the Districts: 2021: total
+const ALL_DISTRCITS = [];
+data2021ZoneTotal.forEach((obj) => {
+  const isIncluded = ALL_DISTRCITS.find(
+    (data) => data.DISTRICT === obj.DISTRICT
+  );
+  if (!isIncluded) {
+    ALL_DISTRCITS.push({ ...obj });
+  } else return;
+});
+// console.log(ALL_DISTRCITS);
+const RenderDot = ({ cx, cy }) => {
+  return <Dot cx={cx} cy={cy} fill="blue" r={2} />;
+};
 
 const ScatterGraph = ({ toggle, current }) => {
   //
@@ -27,11 +48,15 @@ const ScatterGraph = ({ toggle, current }) => {
   //
   return (
     <div className="flex flex-col gap-2 h-full w-full items-center ">
+      {/* Header with Toggle */}
       <div className=" relative w-full">
-        <h2 className="underline text-center">Scatter Graph Vietnam</h2>
+        <h2 className="underline text-center">
+          Scatter Graph Vietnam: 2021: Total
+        </h2>
         <MapTypeToggle current={current} toggle={toggle} />
       </div>
-
+      {/* <TestDiv /> */}
+      {/* Scatter Graph Section */}
       <ResponsiveContainer className="w-full h-full">
         <ScatterChart
           data={data}
@@ -112,7 +137,8 @@ const ScatterGraph = ({ toggle, current }) => {
             fillOpacity={0.2}
             fill="#008000"
           />
-          <Scatter fill="#8884d8" />
+
+          <Scatter fill="#8884d8" shape={<RenderDot />} />
         </ScatterChart>
       </ResponsiveContainer>
     </div>
