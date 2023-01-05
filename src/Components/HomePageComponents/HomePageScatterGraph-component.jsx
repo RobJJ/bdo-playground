@@ -38,10 +38,23 @@ data2021ZoneTotal.forEach((obj) => {
   } else return;
 });
 // console.log(ALL_DISTRCITS);
+//
+const districtDataForScatter = ALL_DISTRCITS.map((district) => {
+  return {
+    "Environment Score": Math.round(district.ENVR_SCORE),
+    "Economic Score": Math.round(district.ECON_SCORE),
+    District: district.DISTRICT,
+    Province: district.PROVINCE,
+  };
+});
+// console.log(districtDataForScatter);
+//
+// Custom dot for ScatterGraph
 const RenderDot = ({ cx, cy }) => {
   return <Dot cx={cx} cy={cy} fill="blue" r={2} />;
 };
-
+//
+// Main Component
 const ScatterGraph = ({ toggle, current }) => {
   //
 
@@ -51,7 +64,7 @@ const ScatterGraph = ({ toggle, current }) => {
       {/* Header with Toggle */}
       <div className=" relative w-full">
         <h2 className="underline text-center">
-          Scatter Graph Vietnam: 2021: Total
+          District Data Vietnam: 2021: Total
         </h2>
         <MapTypeToggle current={current} toggle={toggle} />
       </div>
@@ -59,7 +72,7 @@ const ScatterGraph = ({ toggle, current }) => {
       {/* Scatter Graph Section */}
       <ResponsiveContainer className="w-full h-full">
         <ScatterChart
-          data={data}
+          data={districtDataForScatter}
           margin={{
             top: 5,
             right: 30,

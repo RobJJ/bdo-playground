@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 function CustomTooltip({ active, payload, label, data }) {
   //
   //   console.log(active);
+  console.log("Data: ", data);
+  console.log("Payload: ", payload);
+  console.log("Active: ", active);
 
   //
   const randomTestFunc = () => {
@@ -15,7 +18,7 @@ function CustomTooltip({ active, payload, label, data }) {
   if (active && payload && payload.length) {
     return (
       <div className="bg-blue-200 p-5 rounded-lg pointer-events-auto">
-        <p className="underline">{data}</p>
+        <p className="underline">{payload[0].payload.Province}</p>
         <p>{`${payload[0].name} : ${payload[0].value}`}</p>
         <p>{`${payload[1].name} : ${payload[1].value}`}</p>
         <button
