@@ -8,6 +8,7 @@ import {
   Tooltip,
 } from "react-leaflet";
 import L from "leaflet";
+import React, { useRef, useState } from "react";
 // import province data for vietnam
 import { vietnamGeoJSON } from "../../RegionData/GeoJSON-vietnam";
 // import district data for vietnam
@@ -79,10 +80,12 @@ const dataByYear = {
 //
 //
 function ChildChoropleth(params) {
-  console.log("being called!");
+  // console.log("being called!");
   // Bring in the layerType to determine color schema
   const { layerType, choroplethYear, setChoroplethYear } = useGlobalContext();
-  // data pulled in based on year filter selected
+  // const [layerData, setLayerData] = useState();
+  const testRef = useRef();
+  // data pulled in based on year filter selected. default 2021
   const dataToUse = dataByYear[choroplethYear];
   //
   const ALL_DISTRCITS = [];
@@ -98,17 +101,40 @@ function ChildChoropleth(params) {
     });
   })();
   //
+  useEffect(() => {
+    if (testRef.current) {
+      console.log("wqeqe", testRef.current);
 
+      testRef.current.eachLayer((layer) => {
+        console.log("does random function work");
+        layer.on({
+          mouseover: highlightFeature,
+        });
+        // layer.options.onEachFeature = onEachFeature;
+        // layer.bindPopup(layer.properties.shapeName);
+      });
+    }
+  }, [choroplethYear]);
+  // console.log(ALL_DISTRCITS);
   // console.log(dataToUse);
   //
   // Highlight feature to use when user is mouseOver the province
   function highlightFeature(e) {
-    var layer = e.target;
+    // console.log("highlite func being called");
+    const layer = e.target;
     const provinceName = layer.feature.properties.shapeName;
     // console.log(provinceName);
     const plainText = removeDiacritics(provinceName);
     // console.log(plainText); // Output: Viet Nam
+    // const layerData = dataByYear[choroplethYear].filter(
+    //   (district) => district.PROVINCE === plainText
+    // );
+    // console.log(
+    //   "HIGHLITE: This is what my distrcit array looks like...",
+    //   ALL_DISTRCITS
+    // );
     const layerData = ALL_DISTRCITS.filter((obj) => obj.PROVINCE === plainText);
+    // console.log("this layerdata should have",layerData);
     const numberOfDistrcitsInProvince = layerData.length;
     // Create Average ECON_SCORE for Province -
     let econScores = 0;
@@ -129,7 +155,7 @@ function ChildChoropleth(params) {
       className: "underline text-blue-200 font-bold",
     };
     // content for popup
-    let content = `Province: ${layer.feature.properties.shapeName}</br>Districts: ${numberOfDistrcitsInProvince}</br>Econ Score: ${averageEconScore}</br>Env Score: ${averageEnvScore}`;
+    let content = `Province: ${layer.feature.properties.shapeName}</br>Districts: ${numberOfDistrcitsInProvince}</br>Econ Score: ${averageEconScore}</br>Env Score: ${averageEnvScore}</br>Year: ${layerData[0].YEAR}`;
     // create the popup
     let popup = L.popup(options).setContent(content);
     //feature.properties.shapeName
@@ -163,6 +189,7 @@ function ChildChoropleth(params) {
   }
   // hover
   function onEachFeature(feature, layer) {
+    console.log("does this change on year change?");
     layer.on({
       mouseover: highlightFeature,
       mouseout: resetHighlight,
@@ -211,10 +238,16 @@ function ChildChoropleth(params) {
   // A function that returns an object containing styles
   // Using it for GeoJSON
   function style(feature) {
+    // console.log(
+    //   "STYLE: This is what my distrcit array looks like...",
+    //   ALL_DISTRCITS
+    // );
+
     const provinceName = removeDiacritics(feature.properties.shapeName);
     const layerData = ALL_DISTRCITS.filter(
       (obj) => obj.PROVINCE === provinceName
     );
+    //
     const numberOfDistrcitsInProvince = layerData.length;
     let envScores = 0;
     let econScores = 0;
@@ -248,6 +281,7 @@ function ChildChoropleth(params) {
         style={style}
         data={vietnamGeoJSON}
         // data={districtGeoJSON}
+        ref={testRef}
       ></GeoJSON>
     </>
   );
@@ -266,3 +300,9 @@ export default ChildChoropleth;
 //     ALL_DISTRCITS.push({ ...obj });
 //   } else return;
 // });
+//
+//
+// ISSUES
+// Highlight feature not updating correctly....
+// the color map is changing ? correctly we need to check this????
+// but the tooltip data is not changing... the onEachFeature doesnt seem to be reloaded when the component renders again which is strange... maybe because its a function that is not returning something that changes?????
