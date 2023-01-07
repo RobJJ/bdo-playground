@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import L, { Control } from "leaflet";
 import {
   MapContainer,
@@ -14,9 +14,18 @@ import ChildChoropleth from "./HomePAgeChoroplethVietnam-component";
 import MapTypeToggle from "./HomePageChoroplethControl-component";
 import ChoroLegend from "./HomePageChoroplethLegend-component";
 import LayerSwitch from "./HomePageChoroplethLayerSwitch-component";
+import RefreshMap from "./Choropleth-refresh-component";
 
 const VietnamMap = ({ toggle, current }) => {
+  const mapRef = useRef();
   const defaultPosition = [16.06, 108.21];
+  //
+  function changeZoom(e) {
+    // sets view locations and zoom
+    mapRef.current.setView(defaultPosition, 5);
+    // set the year filter back to default
+    // set score view back to default
+  }
   //
 
   return (
@@ -25,6 +34,7 @@ const VietnamMap = ({ toggle, current }) => {
       zoom={5}
       scrollWheelZoom={true}
       className="h-full w-full"
+      ref={mapRef}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -35,6 +45,7 @@ const VietnamMap = ({ toggle, current }) => {
       <MapTypeToggle current={current} toggle={toggle} />
       <ChoroLegend />
       <LayerSwitch />
+      <RefreshMap changeZoom={changeZoom} />
     </MapContainer>
   );
 };
