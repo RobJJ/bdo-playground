@@ -52,12 +52,26 @@ function removeDiacritics(str) {
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/Đ/g, "D");
 }
-//
+// Yearly filtered Data - hardCoded for testing
 const data2021ZoneTotal = JSON_DATA.filter(
   (obj) => obj.YEAR === 2021 && obj.ZONE === "total"
 );
-// contains all the objects that have 2021 and 'total'
-// console.log(data2021ZoneTotal);
+const data2020ZoneTotal = JSON_DATA.filter(
+  (obj) => obj.YEAR === 2020 && obj.ZONE === "total"
+);
+const data2018ZoneTotal = JSON_DATA.filter(
+  (obj) => obj.YEAR === 2018 && obj.ZONE === "total"
+);
+const data2019ZoneTotal = JSON_DATA.filter(
+  (obj) => obj.YEAR === 2019 && obj.ZONE === "total"
+);
+const dataByYear = {
+  2021: data2021ZoneTotal,
+  2020: data2020ZoneTotal,
+  2019: data2019ZoneTotal,
+  2018: data2018ZoneTotal,
+};
+//
 //
 // An array of the Districts: 2021: total
 const ALL_DISTRCITS = [];
@@ -69,11 +83,15 @@ data2021ZoneTotal.forEach((obj) => {
     ALL_DISTRCITS.push({ ...obj });
   } else return;
 });
-// console.log(ALL_DISTRCITS);
+//
 //
 function ChildChoropleth(params) {
   // Bring in the layerType to determine color schema
-  const { layerType } = useGlobalContext();
+  const { layerType, choroplethYear, setChoroplethYear } = useGlobalContext();
+  //
+  const dataToUse = dataByYear[choroplethYear];
+  console.log(dataToUse);
+  //
   // Highlight feature to use when user is mouseOver the province
   function highlightFeature(e) {
     var layer = e.target;

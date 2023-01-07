@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
+import { useGlobalContext } from "../../Context-Reducer/Context";
 //
 // The current years in the GEO_DATA file - hard coded for now
 const currentUsedYears = [2018, 2019, 2020, 2021];
@@ -7,12 +8,15 @@ const currentUsedYears = [2018, 2019, 2020, 2021];
 //
 function FilterYear(params) {
   //
+  const { choroplethYear, setChoroplethYear } = useGlobalContext();
   const [isOpen, setIsOpen] = useState(false);
-  const [mapYearFilter, setMapYearFilter] = useState(2021);
   //
-  function handleMapYearClick(e) {
-    console.log(e.target.dataset.tag);
-  }
+  const handleMapYearClick = (e) => {
+    console.log("The year has been clicked.. year is:", e.target.dataset.tag);
+    const yearSelected = e.target.dataset.tag;
+    setChoroplethYear(yearSelected);
+    setIsOpen(!isOpen);
+  };
   //
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -27,7 +31,7 @@ function FilterYear(params) {
             type="button"
             className="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
           >
-            Year: {mapYearFilter}
+            Year: {choroplethYear}
             <FaAngleDown className="text-base ml-1" />
           </button>
         </span>
