@@ -15,12 +15,13 @@ import MapTypeToggle from "./HomePageChoroplethControl-component";
 import ChoroLegend from "./HomePageChoroplethLegend-component";
 import LayerSwitch from "./HomePageChoroplethLayerSwitch-component";
 import RefreshMap from "./Choropleth-refresh-component";
+import FilterYear from "./Choropleth-filter-year-component";
 
 const VietnamMap = ({ toggle, current }) => {
   const mapRef = useRef();
   const defaultPosition = [16.06, 108.21];
   //
-  function changeZoom(e) {
+  function refreshMapToDefault(e) {
     // sets view locations and zoom
     mapRef.current.setView(defaultPosition, 5);
     // set the year filter back to default
@@ -45,7 +46,8 @@ const VietnamMap = ({ toggle, current }) => {
       <MapTypeToggle current={current} toggle={toggle} />
       <ChoroLegend />
       <LayerSwitch />
-      <RefreshMap changeZoom={changeZoom} />
+      <RefreshMap changeZoom={refreshMapToDefault} />
+      <FilterYear />
     </MapContainer>
   );
 };

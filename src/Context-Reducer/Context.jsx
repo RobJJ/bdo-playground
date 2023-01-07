@@ -7,6 +7,7 @@ import { testDataBDO } from "../RegionData/TestData";
 const initialState = {
   tabBarState: [],
 };
+const defaultChoroplethYear = 2021;
 //
 const AppContext = React.createContext();
 //
@@ -14,10 +15,12 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   //
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [regionData, setRegionData] = useState(testDataBDO);
-  // These chosen variables are for the filter button (testing)
-  const [chosenYear, setChosenYear] = useState(false);
-  const [chosenProvince, setChosenProvince] = useState(false);
+  const [choroplethYear, setChoroplethYear] = useState(defaultChoroplethYear);
+  //
+  // Old stuff here
+  // const [regionData, setRegionData] = useState(testDataBDO);
+  // const [chosenYear, setChosenYear] = useState(false);
+  // const [chosenProvince, setChosenProvince] = useState(false);
   //
   // A layerType for environment vs economic choice
   const [layerType, setLayerType] = useState("env");
@@ -37,15 +40,13 @@ const AppProvider = ({ children }) => {
       value={{
         ...state,
         dispatch,
-        regionData,
-        setRegionData,
+
         tabAddFunc,
-        chosenYear,
-        setChosenYear,
-        chosenProvince,
-        setChosenProvince,
+
         layerType,
         setLayerType,
+        choroplethYear,
+        setChoroplethYear,
       }}
     >
       {children}
