@@ -14,6 +14,7 @@ import { vietnamGeoJSON } from "../../RegionData/GeoJSON-vietnam";
 // import { districtGeoJSON } from "../../RegionData/GeoJSON-districts-vietnam";
 import { JSON_DATA } from "../../RegionData/JSON_DATA"; // green earth data
 import { useGlobalContext } from "../../Context-Reducer/Context";
+import { useEffect } from "react";
 //
 export const MAP_COLORS_ENV = [
   { color: "#005a32", range: 75 },
@@ -74,23 +75,31 @@ const dataByYear = {
 //
 //
 // An array of the Districts: 2021: total
-const ALL_DISTRCITS = [];
-data2021ZoneTotal.forEach((obj) => {
-  const isIncluded = ALL_DISTRCITS.find(
-    (data) => data.DISTRICT === obj.DISTRICT
-  );
-  if (!isIncluded) {
-    ALL_DISTRCITS.push({ ...obj });
-  } else return;
-});
+
 //
 //
 function ChildChoropleth(params) {
+  console.log("being called!");
   // Bring in the layerType to determine color schema
   const { layerType, choroplethYear, setChoroplethYear } = useGlobalContext();
-  //
+  // data pulled in based on year filter selected
   const dataToUse = dataByYear[choroplethYear];
-  console.log(dataToUse);
+  //
+  const ALL_DISTRCITS = [];
+  // IIFE - everytime choroplethYear changes, this will be called again on mount
+  (function updateDistrictData() {
+    dataToUse.forEach((obj) => {
+      const isIncluded = ALL_DISTRCITS.find(
+        (data) => data.DISTRICT === obj.DISTRICT
+      );
+      if (!isIncluded) {
+        ALL_DISTRCITS.push({ ...obj });
+      } else return;
+    });
+  })();
+  //
+
+  // console.log(dataToUse);
   //
   // Highlight feature to use when user is mouseOver the province
   function highlightFeature(e) {
@@ -112,19 +121,6 @@ function ChildChoropleth(params) {
       econScores / numberOfDistrcitsInProvince
     );
     const averageEnvScore = Math.round(envScores / numberOfDistrcitsInProvince);
-    // const averageEconScoreAcrossDistricts=
-    // console.log("layerData: ", layerData);
-    // console.log("layer target: ", layer);
-    //
-    // STYLES FOR onMouseOver
-    layer.setStyle({
-      weight: 3,
-      color: "#666",
-      dashArray: "",
-      fillOpacity: 0.7,
-    });
-    layer.bringToFront();
-    //
     // POPUP
     // customise the popup
     let options = {
@@ -139,6 +135,15 @@ function ChildChoropleth(params) {
     //feature.properties.shapeName
     // set the popup
     layer.bindPopup(popup).openPopup();
+    //
+    // STYLES FOR onMouseOver - highlighting effect
+    layer.setStyle({
+      weight: 3,
+      color: "#666",
+      dashArray: "",
+      fillOpacity: 0.7,
+    });
+    layer.bringToFront();
   }
   // Set the highlighted region back to default style: hover
   function resetHighlight(e) {
@@ -251,3 +256,13 @@ function ChildChoropleth(params) {
 export default ChildChoropleth;
 
 // This function needs to be cleaned up... there are a lot of repeating functions that need to be encapsulated in their own functions.
+
+// Old method to set 2021 district info
+// data2021ZoneTotal.forEach((obj) => {
+//   const isIncluded = ALL_DISTRCITS.find(
+//     (data) => data.DISTRICT === obj.DISTRICT
+//   );
+//   if (!isIncluded) {
+//     ALL_DISTRCITS.push({ ...obj });
+//   } else return;
+// });
