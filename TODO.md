@@ -1,3 +1,56 @@
+Discussion:
+Summary:
+add econ line to the line graph over the years
+For the bar graphs,, add a year filter and have the scores update
+Use remix icons for the icons for that bar graph
+For
+Scatter:
+Year filter and province filter
+Have the hover bring up the tooltip and have the cursor change and the color of the selecte dot change.
+Have a drop down sort of selector to change the x-axis (air,deforest,temp)
+Map:
+Have year filter ? try have a click through functionality
+Implement a way of clicking on the province and then rendering the districts in that area ,,, also have the list change on click to show the distrcits in that province.
+
+HomePage - MAP :
+
+1. Default landing view ->
+2. Filter Button / Interaction
+3. Filters to be included
+4. Use of ToolTip
+5. Visualisation of the filtered data
+6. How and when to expose districts
+7. When to click through to a district summary
+
+   HomePage - SCATTER :
+
+8. Default landing view ->
+9. Filter Button / Interaction
+10. Filters to be included
+11. Tooltip use (cluttered)
+12. How to click through to district summary
+
+    HomePage - Province/District List
+
+13. Province or districts?
+14. Scores shown - Year vs Zone
+    Idea... We could use this area as a automatic response to where you click on the map? For example, you click a province -> automatically filters the districts for that Province
+
+    SummaryPage - Line Graph
+
+15. Show 'total' scores through the years of 3x scores. Add econ?
+16. No filters
+
+    SummaryPage - Bar Graph
+
+17. Showing 'total' 2021 ?
+18. Average line you have there shows what? average total? year? across all districts in that province or country?
+
+    SummaryPage - Card comp and Recc
+
+19. Missing card data
+20. Missing Recc data
+
 Components & Functionality to implement and test...
 .
 helpful info
@@ -82,3 +135,10 @@ This will run the code in the file and print the Pearson correlation coefficient
 ---
 
 ---
+
+Notes from team feedback
+.
+The map will have to have a Year filter (default 2021), province filter that shows distritcts (something interesting to implement here), an urban-rural-total zone graphical view...
+the scatter will also need year, urban, rural, total, also province view and distrcit view.
+
+clean up the page to make MVP

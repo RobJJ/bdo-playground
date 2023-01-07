@@ -8,7 +8,10 @@ import {
   Tooltip,
 } from "react-leaflet";
 import L from "leaflet";
-import { vietnamGeoJSON } from "../../RegionData/GeoJSON-vietnam"; // import GeoJSON data for Vietnam
+// import province data for vietnam
+import { vietnamGeoJSON } from "../../RegionData/GeoJSON-vietnam";
+// import district data for vietnam
+// import { districtGeoJSON } from "../../RegionData/GeoJSON-districts-vietnam";
 import { JSON_DATA } from "../../RegionData/JSON_DATA"; // green earth data
 import { useGlobalContext } from "../../Context-Reducer/Context";
 //
@@ -129,12 +132,18 @@ function ChildChoropleth(params) {
       fillOpacity: 0.7,
     });
   }
+  // handleClick on map province ... set state var here
+  function handleProvinceClick(e) {
+    // var layer = e.target;
+    // const provinceName = layer.feature.properties.shapeName;
+    // console.log(layer.feature);
+  }
   // hover
   function onEachFeature(feature, layer) {
     layer.on({
       mouseover: highlightFeature,
       mouseout: resetHighlight,
-      // click: zoomToFeature,
+      click: handleProvinceClick,
     });
   }
 
@@ -196,6 +205,7 @@ function ChildChoropleth(params) {
       econScores / numberOfDistrcitsInProvince
     );
     return {
+      // fillColor: "#238b45",
       fillColor:
         layerType === "env"
           ? getColor(averageEnvScore)
@@ -214,6 +224,7 @@ function ChildChoropleth(params) {
         onEachFeature={onEachFeature}
         style={style}
         data={vietnamGeoJSON}
+        // data={districtGeoJSON}
       ></GeoJSON>
     </>
   );

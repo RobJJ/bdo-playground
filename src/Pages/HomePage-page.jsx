@@ -20,52 +20,33 @@ function HomePage(params) {
   const toggleMapChoice = (type) => {
     setCurrentPage(type);
   };
-  useEffect(() => {
-    if (!chosenYear && !chosenProvince) {
-      setFilteredData(regionData);
-    }
-    // Set newFilteredData to all available Data
-    let newFilteredData = regionData;
-    // Filter the data based on year chosen option exists
-    if (chosenYear) {
-      newFilteredData = newFilteredData.filter(
-        (dataObj) => dataObj.YEAR === Number(chosenYear)
-      );
-    }
-    if (chosenProvince) {
-      newFilteredData = newFilteredData.filter(
-        (dataObj) =>
-          dataObj.PROVINCE.split(" ").join("") ===
-          chosenProvince.split(" ").join("")
-      );
-    }
-    // Refresh the data used for the component
-    setFilteredData(newFilteredData);
-  }, [chosenYear, chosenProvince]);
+  // useEffect(() => {
+  //   if (!chosenYear && !chosenProvince) {
+  //     setFilteredData(regionData);
+  //   }
+  //   // Set newFilteredData to all available Data
+  //   let newFilteredData = regionData;
+  //   // Filter the data based on year chosen option exists
+  //   if (chosenYear) {
+  //     newFilteredData = newFilteredData.filter(
+  //       (dataObj) => dataObj.YEAR === Number(chosenYear)
+  //     );
+  //   }
+  //   if (chosenProvince) {
+  //     newFilteredData = newFilteredData.filter(
+  //       (dataObj) =>
+  //         dataObj.PROVINCE.split(" ").join("") ===
+  //         chosenProvince.split(" ").join("")
+  //     );
+  //   }
+  //   // Refresh the data used for the component
+  //   setFilteredData(newFilteredData);
+  // }, [chosenYear, chosenProvince]);
   //
   return (
     <section className="bg-blue-100 w-full h-full p-2 flex smlr:flex-col gap-1 overflow-auto">
-      {/* Graphs area */}
       <div className="bg-blue-200 w-4/6 smlr:w-full smlr:h-4/6 p-2 flex gap-2">
-        <div className=" h-full bg-white rounded-lg shadow-lg p-2 overflow-auto">
-          <h2 className="underline mb-5">
-            Creating some random district names here
-          </h2>
-          <div className="bg-red-100 flex flex-col gap-2 text-blue-500 overflow-auto">
-            {filteredData.map((regionObj) => {
-              const { PROVINCE, DISTRICT, YEAR, ZONE } = regionObj;
-              return (
-                <Link
-                  key={uuidv4()}
-                  to={`summary/${DISTRICT}`}
-                  onClick={() => tabAddFunc(DISTRICT)}
-                >
-                  {PROVINCE} : {DISTRICT} : {YEAR} : {ZONE}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
+        {/* Graphs area */}
         <div className="w-full bg-white rounded-lg shadow-lg p-2">
           {/*<ScatterGraph /> or <VietnamMap /> rendered based on choice*/}
           {currentPage === "map" && (
@@ -82,9 +63,7 @@ function HomePage(params) {
           Basic Info
         </div>
         <div className="bg-white w-full h-4/6 smlr:h-full smlr:w-4/6 rounded-lg shadow-lg p-2">
-          <FilterButtonYear />
-          <FilterButtonProvince />
-          <FilterButtonClearAll />
+          List section
         </div>
       </div>
     </section>
@@ -94,3 +73,27 @@ function HomePage(params) {
 export default HomePage;
 
 // When we render the link and fire the click event, we could pass the full object. Keep this in mind for later if this make it easier to render the summary component from the tabBar and not filter it
+
+//REMOVED FROM HOMEPAGE
+// <div className=" h-full bg-white rounded-lg shadow-lg p-2 overflow-auto">
+//   <h2 className="underline mb-5">Creating some random district names here</h2>
+//   <div className="bg-red-100 flex flex-col gap-2 text-blue-500 overflow-auto">
+//     {filteredData.map((regionObj) => {
+//       const { PROVINCE, DISTRICT, YEAR, ZONE } = regionObj;
+//       return (
+//         <Link
+//           key={uuidv4()}
+//           to={`summary/${DISTRICT}`}
+//           onClick={() => tabAddFunc(DISTRICT)}
+//         >
+//           {PROVINCE} : {DISTRICT} : {YEAR} : {ZONE}
+//         </Link>
+//       );
+//     })}
+//   </div>
+// </div>;
+//
+// remove buttons from testing homePAge
+// <FilterButtonYear />
+//           <FilterButtonProvince />
+//           <FilterButtonClearAll />
