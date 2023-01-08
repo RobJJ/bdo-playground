@@ -22,6 +22,7 @@ function HomePage(params) {
   const toggleMapChoice = (type) => {
     setCurrentPage(type);
   };
+
   // useEffect(() => {
   //   if (!chosenYear && !chosenProvince) {
   //     setFilteredData(regionData);
@@ -46,10 +47,10 @@ function HomePage(params) {
   // }, [chosenYear, chosenProvince]);
   //
   return (
-    <section className="bg-blue-100 w-full h-full p-2 flex smlr:flex-col gap-1 overflow-auto">
-      <div className="bg-blue-200 w-4/6 smlr:w-full smlr:h-4/6 p-2 flex gap-2">
+    <section className=" w-full h-full p-2 flex smlr:flex-col gap-1 overflow-auto">
+      <div className=" w-4/6 smlr:w-full smlr:h-4/6 p-2 flex gap-2">
         {/* Graphs area */}
-        <div className="w-full bg-white rounded-lg shadow-lg p-2">
+        <div className="w-full bg-white rounded-lg shadow-xl p-2">
           {/*<ScatterGraph /> or <VietnamMap /> rendered based on choice*/}
           {currentPage === "map" && (
             <VietnamMap current={currentPage} toggle={toggleMapChoice} />
@@ -60,8 +61,8 @@ function HomePage(params) {
         </div>
       </div>
       {/* Info area - 2 pieces */}
-      <div className="bg-blue-200 w-2/6 h-full smlr:w-full smlr:h-2/6 p-2 flex flex-col smlr:flex-row gap-2">
-        <div className="bg-white w-full h-2/6 smlr:h-full smlr:w-2/6 rounded-lg shadow-lg p-1">
+      <div className=" w-2/6 h-full smlr:w-full smlr:h-2/6 p-2 flex flex-col smlr:flex-row gap-2">
+        <div className="bg-white w-full h-2/6 smlr:h-full smlr:w-2/6 rounded-lg shadow-xl p-1">
           <BasicInfoHome />
         </div>
         <div className="bg-white w-full h-4/6 smlr:h-full smlr:w-4/6 rounded-lg shadow-lg p-1">

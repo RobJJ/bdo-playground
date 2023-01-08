@@ -12,46 +12,11 @@ Map:
 Have year filter ? try have a click through functionality
 Implement a way of clicking on the province and then rendering the districts in that area ,,, also have the list change on click to show the distrcits in that province.
 
-HomePage - MAP :
+small tweaks style
+let each parent card have onhover shadow. make shadow different color for blend
+homepagemap-add step button to change year
+when user clicks through to a district, add toast alert at top of page, brings users eye to the top
 
-1. Default landing view ->
-2. Filter Button / Interaction
-3. Filters to be included
-4. Use of ToolTip
-5. Visualisation of the filtered data
-6. How and when to expose districts
-7. When to click through to a district summary
-
-   HomePage - SCATTER :
-
-8. Default landing view ->
-9. Filter Button / Interaction
-10. Filters to be included
-11. Tooltip use (cluttered)
-12. How to click through to district summary
-
-    HomePage - Province/District List
-
-13. Province or districts?
-14. Scores shown - Year vs Zone
-    Idea... We could use this area as a automatic response to where you click on the map? For example, you click a province -> automatically filters the districts for that Province
-
-    SummaryPage - Line Graph
-
-15. Show 'total' scores through the years of 3x scores. Add econ?
-16. No filters
-
-    SummaryPage - Bar Graph
-
-17. Showing 'total' 2021 ?
-18. Average line you have there shows what? average total? year? across all districts in that province or country?
-
-    SummaryPage - Card comp and Recc
-
-19. Missing card data
-20. Missing Recc data
-
-Components & Functionality to implement and test...
 .
 helpful info
 https://tmsvr.com/react-leaflet-map-performance-issues/

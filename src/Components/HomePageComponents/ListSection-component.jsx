@@ -13,32 +13,41 @@ const defaultTotalData2021 = zoneTotalData.filter((obj) => obj.YEAR === 2021);
 function ListSection(params) {
   //
   //   const [loading, setLoading] = useState(false);
-  const [searchedWord, setSearchedWord] = useState("");
+  const [searchedLetters, setSearchedLetters] = useState("");
+  const [listData, setListData] = useState();
   const [yearDataTotal, setYearDataTotal] = useState(defaultTotalData2021);
   const { choroplethYear } = useGlobalContext();
   //
   useEffect(() => {
-    // setLoading(true);
+    //
     const newTotalDataYear = zoneTotalData.filter(
       (obj) => obj.YEAR === Number(choroplethYear)
     );
     // update the data we will use in List Component
     setYearDataTotal(newTotalDataYear);
-    // setLoading(false);
-    // setTimeout(() => {
-
-    // }, 1000);
-
-    // get new data for selected year
   }, [choroplethYear]);
   //
+  useEffect(() => {
+    // const freshData =
+    const newData = zoneTotalData
+      .filter((obj) => obj.YEAR === Number(choroplethYear))
+      .filter((obj) => {
+        const isIncluded = obj.DISTRICT.includes(searchedLetters);
+        if (isIncluded) return obj;
+      });
+    // const newData = zoneTotalData.filter((obj) => {
+    //   const isIncluded = obj.DISTRICT.includes(searchedLetters);
+    //   if (isIncluded) return obj;
+    // });
+    setYearDataTotal(newData);
+  }, [searchedLetters]);
 
   //
   //   console.log("List comp rerendered??, data: ", yearDataTotal);
   //
   return (
     <div className=" w-full h-full flex flex-col">
-      <section className="w-full bg-red-200 flex p-1 text-center">
+      <section className="w-full  flex p-1 text-center">
         <div className="w-1/2 flex justify-start items-center gap-2 pl-5">
           <span>
             <FaMapMarkedAlt fill="rgb(2 132 199)" className="text-xl" />
@@ -47,7 +56,10 @@ function ListSection(params) {
           <span className="font-semibold">{choroplethYear}</span>
         </div>
         <div className="w-1/2">
-          <ListSearchBar />
+          <ListSearchBar
+            letters={searchedLetters}
+            setLetters={setSearchedLetters}
+          />
         </div>
       </section>
       {/* TABLE DISTRICT SECTION */}

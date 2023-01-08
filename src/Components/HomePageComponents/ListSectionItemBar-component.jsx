@@ -10,7 +10,8 @@ function ListSectionItemBar({ value, type }) {
     // transition: "width 0.8s ease-in-out",
   };
   //
-
+  //#238b45
+  //#2171b5
   //
   return (
     <div className="  h-full w-full">
@@ -20,12 +21,12 @@ function ListSectionItemBar({ value, type }) {
           let colorToUse;
 
           if (testing >= 10) {
-            colorToUse = type === "eco" ? "bg-blue-300" : "bg-green-300";
+            colorToUse = type === "eco" ? "bg-[#4292c6]" : "bg-[#41ab5d]";
           }
           if (testing < 10 && testing > 0) {
             // using 2nd color as 0% created fixed line instead of gradient
             style.backgroundImage = `linear-gradient(90deg, ${
-              type === "eco" ? "#93C5FD" : "#86EFAC"
+              type === "eco" ? "#4292c6" : "#41ab5d"
             } ${testing * 10}%, #CBD5E1 0%)`;
           }
           if (testing <= 0) {
