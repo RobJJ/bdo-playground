@@ -8,9 +8,11 @@ function ListSectionItem(params) {
       <span className="w-1/12 border-r-2 border-slate-300">1</span>
       <span className="w-3/12 border-r-2 border-slate-300">An Giang</span>
       <span className="w-4/12 border-r-2 border-slate-300">
-        <ListSectionItemBar />
+        <ListSectionItemBar value={55} type={"eco"} />
       </span>
-      <span className="w-4/12 ">Env bar</span>
+      <span className="w-4/12 ">
+        <ListSectionItemBar value={25} type={"env"} />
+      </span>
     </div>
   );
 }

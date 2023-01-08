@@ -25,13 +25,6 @@ function ListSection(params) {
           <ListSectionItem />
           <ListSectionItem />
           <ListSectionItem />
-          <ListSectionItem />
-          <ListSectionItem />
-          <ListSectionItem />
-          <ListSectionItem />
-          <ListSectionItem />
-          <ListSectionItem />
-          <ListSectionItem />
         </div>
       </section>
     </div>

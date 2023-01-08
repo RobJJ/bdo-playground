@@ -1,13 +1,15 @@
 import React from "react";
 //
 //
-function ListSectionItemBar({ value }) {
+function ListSectionItemBar({ value, type }) {
   //
-  let testing = 55;
+  let testing = 47;
   let style = {
     width: "10%",
     backgroundImage: "",
   };
+  //
+
   //
   return (
     <div className="  h-full w-full">
@@ -17,16 +19,13 @@ function ListSectionItemBar({ value }) {
           let colorToUse;
 
           if (testing >= 10) {
-            colorToUse = "bg-blue-300";
+            colorToUse = type === "eco" ? "bg-blue-300" : "bg-green-300";
           }
           if (testing < 10 && testing > 0) {
-            style.backgroundImage = `linear-gradient(to right, #93C5FD ${
-              testing * 10
-            }%, #CBD5E1 ${(10 - testing) * 10}%)`;
-            // colorToUse = `bg-gradient-to-r `;
-            // colorToUse = `linear-gradient(to right, bg-blue-300 ${
-            //   testing * 10
-            // }%, bg-red-300 ${(10 - testing) * 10}%)`;
+            // using 2nd color as 0% created fixed line instead of gradient
+            style.backgroundImage = `linear-gradient(90deg, ${
+              type === "eco" ? "#93C5FD" : "#86EFAC"
+            } ${testing * 10}%, #CBD5E1 0%)`;
           }
           if (testing <= 0) {
             colorToUse = "bg-slate-300";
