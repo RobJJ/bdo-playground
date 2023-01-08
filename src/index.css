@@ -8,22 +8,6 @@
   height: 0;
 }
 
-/* .testing {
-  &::before,
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 10%;
-    background: white;
-    border-right: 1px solid black;
-  }
-  &::before {
-    left: 0;
-  }
-  &::after {
-    right: 0;
-  }
+/* .two-color-div {
+  background-image: linear-gradient(to right, red 50%, blue 50%);
 } */
