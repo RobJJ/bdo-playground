@@ -8,6 +8,7 @@ import FilterButtonClearAll from "../Components/FilterButtons/FilterButtonClearA
 import ScatterGraph from "../Components/HomePageComponents/HomePageScatterGraph-component";
 import VietnamMap from "../Components/HomePageComponents/HomePageChoropleth-component";
 import BasicInfoHome from "../Components/HomePageComponents/BasicInfo-component";
+import ListSection from "../Components/HomePageComponents/ListSection-component";
 //
 //
 function HomePage(params) {
@@ -63,8 +64,8 @@ function HomePage(params) {
         <div className="bg-white w-full h-2/6 smlr:h-full smlr:w-2/6 rounded-lg shadow-lg p-1">
           <BasicInfoHome />
         </div>
-        <div className="bg-white w-full h-4/6 smlr:h-full smlr:w-4/6 rounded-lg shadow-lg p-2">
-          List section
+        <div className="bg-white w-full h-4/6 smlr:h-full smlr:w-4/6 rounded-lg shadow-lg p-1">
+          <ListSection />
         </div>
       </div>
     </section>
