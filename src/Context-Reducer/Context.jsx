@@ -16,6 +16,8 @@ const AppProvider = ({ children }) => {
   //
   const [state, dispatch] = useReducer(reducer, initialState);
   const [choroplethYear, setChoroplethYear] = useState(defaultChoroplethYear);
+  const [searchedLetters, setSearchedLetters] = useState("");
+  const [provinceData, setProvinceData] = useState(null);
   //
   // Old stuff here
   // const [regionData, setRegionData] = useState(testDataBDO);
@@ -40,13 +42,15 @@ const AppProvider = ({ children }) => {
       value={{
         ...state,
         dispatch,
-
         tabAddFunc,
-
         layerType,
         setLayerType,
         choroplethYear,
         setChoroplethYear,
+        searchedLetters,
+        setSearchedLetters,
+        provinceData,
+        setProvinceData,
       }}
     >
       {children}

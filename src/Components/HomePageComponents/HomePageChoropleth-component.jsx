@@ -16,14 +16,19 @@ import ChoroLegend from "./HomePageChoroplethLegend-component";
 import LayerSwitch from "./HomePageChoroplethLayerSwitch-component";
 import RefreshMap from "./Choropleth-refresh-component";
 import FilterYear from "./Choropleth-filter-year-component";
+import { useGlobalContext } from "../../Context-Reducer/Context";
 
 const VietnamMap = ({ toggle, current }) => {
   const mapRef = useRef();
   const defaultPosition = [16.06, 108.21];
+  const { setProvinceData, setChoroplethYear } = useGlobalContext();
+
   //
   function refreshMapToDefault(e) {
     // sets view locations and zoom
     mapRef.current.setView(defaultPosition, 5);
+    setProvinceData(null);
+    setChoroplethYear(2021);
     // set the year filter back to default
     // set score view back to default
   }

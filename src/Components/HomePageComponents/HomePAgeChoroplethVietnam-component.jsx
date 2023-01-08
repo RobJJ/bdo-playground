@@ -82,7 +82,13 @@ const dataByYear = {
 function ChildChoropleth(params) {
   // console.log("being called!");
   // Bring in the layerType to determine color schema
-  const { layerType, choroplethYear, setChoroplethYear } = useGlobalContext();
+  const {
+    layerType,
+    choroplethYear,
+    setChoroplethYear,
+    provinceData,
+    setProvinceData,
+  } = useGlobalContext();
   // const [layerData, setLayerData] = useState();
   const testRef = useRef();
   // data pulled in based on year filter selected. default 2021
@@ -183,9 +189,14 @@ function ChildChoropleth(params) {
   }
   // handleClick on map province ... set state var here
   function handleProvinceClick(e) {
-    // var layer = e.target;
-    // const provinceName = layer.feature.properties.shapeName;
-    // console.log(layer.feature);
+    // Get cleaned province name
+    const province = removeDiacritics(e.target.feature.properties.shapeName);
+    setProvinceData(province);
+    // Set the province data for list to use
+    // const data = ALL_DISTRCITS.filter((obj) => obj.PROVINCE === province);
+    // console.log(data);
+    // setProvinceData()
+    // setSearchedLetters(province);
   }
   // hover
   function onEachFeature(feature, layer) {
@@ -301,8 +312,3 @@ export default ChildChoropleth;
 //   } else return;
 // });
 //
-//
-// ISSUES
-// Highlight feature not updating correctly....
-// the color map is changing ? correctly we need to check this????
-// but the tooltip data is not changing... the onEachFeature doesnt seem to be reloaded when the component renders again which is strange... maybe because its a function that is not returning something that changes?????

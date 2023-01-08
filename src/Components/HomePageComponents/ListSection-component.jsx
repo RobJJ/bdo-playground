@@ -13,16 +13,25 @@ const defaultTotalData2021 = zoneTotalData.filter((obj) => obj.YEAR === 2021);
 function ListSection(params) {
   //
   //   const [loading, setLoading] = useState(false);
-  const [searchedLetters, setSearchedLetters] = useState("");
-  const [listData, setListData] = useState();
+
   const [yearDataTotal, setYearDataTotal] = useState(defaultTotalData2021);
-  const { choroplethYear } = useGlobalContext();
+  const { choroplethYear, searchedLetters, setSearchedLetters, provinceData } =
+    useGlobalContext();
   //
   useEffect(() => {
     //
     const newTotalDataYear = zoneTotalData.filter(
       (obj) => obj.YEAR === Number(choroplethYear)
     );
+    if (provinceData) {
+      const provinceSpecificData = newTotalDataYear.filter(
+        (obj) => obj.PROVINCE === provinceData
+      );
+      setYearDataTotal(provinceSpecificData);
+      // end function early here
+      return;
+    }
+    // This doesnt get called if province is active
     // update the data we will use in List Component
     setYearDataTotal(newTotalDataYear);
   }, [choroplethYear]);
@@ -41,7 +50,17 @@ function ListSection(params) {
     // });
     setYearDataTotal(newData);
   }, [searchedLetters]);
-
+  //
+  useEffect(() => {
+    // guard clause on first null load
+    if (!provinceData) return;
+    const newData = zoneTotalData
+      .filter((obj) => obj.YEAR === Number(choroplethYear))
+      .filter((obj) => obj.PROVINCE === provinceData);
+    //
+    // set
+    setYearDataTotal(newData);
+  }, [provinceData]);
   //
   //   console.log("List comp rerendered??, data: ", yearDataTotal);
   //
@@ -52,7 +71,9 @@ function ListSection(params) {
           <span>
             <FaMapMarkedAlt fill="rgb(2 132 199)" className="text-xl" />
           </span>
-          <span className=" font-semibold">Vietnam : </span>
+          <span className=" font-semibold">
+            {provinceData ? provinceData : "Vietnam"} :{" "}
+          </span>
           <span className="font-semibold">{choroplethYear}</span>
         </div>
         <div className="w-1/2">
