@@ -7,6 +7,7 @@ import FilterButtonProvince from "../Components/FilterButtons/FilterButtonProvin
 import FilterButtonClearAll from "../Components/FilterButtons/FilterButtonClearAll-component";
 import ScatterGraph from "../Components/HomePageComponents/HomePageScatterGraph-component";
 import VietnamMap from "../Components/HomePageComponents/HomePageChoropleth-component";
+import BasicInfoHome from "../Components/HomePageComponents/BasicInfo-component";
 //
 //
 function HomePage(params) {
@@ -59,8 +60,8 @@ function HomePage(params) {
       </div>
       {/* Info area - 2 pieces */}
       <div className="bg-blue-200 w-2/6 h-full smlr:w-full smlr:h-2/6 p-2 flex flex-col smlr:flex-row gap-2">
-        <div className="bg-white w-full h-2/6 smlr:h-full smlr:w-2/6 rounded-lg shadow-lg p-2">
-          Basic Info
+        <div className="bg-white w-full h-2/6 smlr:h-full smlr:w-2/6 rounded-lg shadow-lg p-1">
+          <BasicInfoHome />
         </div>
         <div className="bg-white w-full h-4/6 smlr:h-full smlr:w-4/6 rounded-lg shadow-lg p-2">
           List section

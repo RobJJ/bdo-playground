@@ -56,8 +56,13 @@ Components & Functionality to implement and test...
 helpful info
 https://tmsvr.com/react-leaflet-map-performance-issues/
 .
+.
 conversion...
 using: https://csvjson.com/csv2json
+charts
+https://nivo.rocks/line/
+https://www.highcharts.com/demo/line-basic
+.
 .
 IDEA...
 on initial load of the APP. Do some 'larger calculations that you can use later when navigating around the site.

@@ -3,7 +3,7 @@ import { FaAngleDown } from "react-icons/fa";
 import { useGlobalContext } from "../../Context-Reducer/Context";
 //
 // The current years in the GEO_DATA file - hard coded for now
-const currentUsedYears = [2018, 2019, 2020, 2021];
+const currentUsedYears = [2021, 2020, 2019, 2018];
 //
 //
 function FilterYear(params) {
