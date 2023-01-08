@@ -11,18 +11,28 @@ const defaultTotalData2021 = zoneTotalData.filter((obj) => obj.YEAR === 2021);
 //
 function ListSection(params) {
   //
+  const [loading, setLoading] = useState(false);
   const [yearDataTotal, setYearDataTotal] = useState(defaultTotalData2021);
   const { choroplethYear } = useGlobalContext();
   //
   useEffect(() => {
-    // get new data for selected year
+    // setLoading(true);
     const newTotalDataYear = zoneTotalData.filter(
-      (obj) => obj.YEAR === choroplethYear
+      (obj) => obj.YEAR === Number(choroplethYear)
     );
     // update the data we will use in List Component
     setYearDataTotal(newTotalDataYear);
-  }, [choroplethYear]);
+    // setLoading(false);
+    // setTimeout(() => {
 
+    // }, 1000);
+
+    // get new data for selected year
+  }, [choroplethYear]);
+  //
+
+  //
+  console.log("List comp rerendered??, data: ", yearDataTotal);
   //
   return (
     <div className=" w-full h-full flex flex-col">
@@ -44,6 +54,7 @@ function ListSection(params) {
           <span className="w-4/12 border-r-2 border-black">Economic</span>
           <span className="w-4/12 ">Environmental</span>
         </div>
+
         <div className="w-full h-full overflow-auto scrollbar-none">
           {yearDataTotal.map((district, idx) => {
             return <ListSectionItem data={district} key={idx} idx={idx} />;

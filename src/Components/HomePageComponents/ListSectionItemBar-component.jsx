@@ -7,6 +7,7 @@ function ListSectionItemBar({ value, type }) {
   let style = {
     width: "10%",
     backgroundImage: "",
+    // transition: "width 0.8s ease-in-out",
   };
   //
 
