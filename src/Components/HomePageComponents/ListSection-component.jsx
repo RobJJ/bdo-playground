@@ -3,6 +3,7 @@ import { FaMapMarkedAlt } from "react-icons/fa";
 import { useGlobalContext } from "../../Context-Reducer/Context";
 import ListSectionItem from "./ListSectionItem-component";
 import { JSON_DATA } from "../../RegionData/JSON_DATA";
+import ListSearchBar from "./ListSectionSearchBar-component";
 //
 // Bring in JSON data and filter for zone 'total'
 const zoneTotalData = JSON_DATA.filter((obj) => obj.ZONE === "total");
@@ -11,7 +12,8 @@ const defaultTotalData2021 = zoneTotalData.filter((obj) => obj.YEAR === 2021);
 //
 function ListSection(params) {
   //
-  const [loading, setLoading] = useState(false);
+  //   const [loading, setLoading] = useState(false);
+  const [searchedWord, setSearchedWord] = useState("");
   const [yearDataTotal, setYearDataTotal] = useState(defaultTotalData2021);
   const { choroplethYear } = useGlobalContext();
   //
@@ -32,7 +34,7 @@ function ListSection(params) {
   //
 
   //
-  console.log("List comp rerendered??, data: ", yearDataTotal);
+  //   console.log("List comp rerendered??, data: ", yearDataTotal);
   //
   return (
     <div className=" w-full h-full flex flex-col">
@@ -44,10 +46,12 @@ function ListSection(params) {
           <span className=" font-semibold">Vietnam : </span>
           <span className="font-semibold">{choroplethYear}</span>
         </div>
-        <div className="w-1/2">Search bar</div>
+        <div className="w-1/2">
+          <ListSearchBar />
+        </div>
       </section>
       {/* TABLE DISTRICT SECTION */}
-      <section className="w-full h-full bg-red-300 flex flex-col overflow-auto">
+      <section className="w-full h-full  flex flex-col overflow-auto">
         <div className="w-full flex text-center border-t-2 border-b-2 border-black ">
           <span className="w-1/12  border-r-2 border-black">No</span>
           <span className="w-3/12  border-r-2 border-black">District</span>
