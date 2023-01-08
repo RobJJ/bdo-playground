@@ -7,7 +7,7 @@ function BasicInfoHome(params) {
       <h2 className="w-full text-center  font-semibold text-lg justify-self-start">
         VIETNAM-WIDE SUMMARY
       </h2>
-      <div className="w-full flex items-start flex-wrap gap-2">
+      <div className="w-full flex items-start flex-wrap gap-2 overflow-auto">
         <BasicInfoCard label={"Total population"} info={"98,800,000"} />
         <BasicInfoCard label={"Urban population"} info={"75,100,000 (75%)"} />
         <BasicInfoCard label={"Rural population"} info={"24,700,000 (25%)"} />

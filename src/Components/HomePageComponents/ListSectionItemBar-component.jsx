@@ -3,7 +3,7 @@ import React from "react";
 //
 function ListSectionItemBar({ value, type }) {
   //
-  let testing = 47;
+  let testing = value;
   let style = {
     width: "10%",
     backgroundImage: "",

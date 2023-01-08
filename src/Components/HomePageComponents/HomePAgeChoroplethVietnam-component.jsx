@@ -103,10 +103,10 @@ function ChildChoropleth(params) {
   //
   useEffect(() => {
     if (testRef.current) {
-      console.log("wqeqe", testRef.current);
+      // console.log("wqeqe", testRef.current);
 
       testRef.current.eachLayer((layer) => {
-        console.log("does random function work");
+        // console.log("does random function work");
         layer.on({
           mouseover: highlightFeature,
         });
@@ -189,7 +189,7 @@ function ChildChoropleth(params) {
   }
   // hover
   function onEachFeature(feature, layer) {
-    console.log("does this change on year change?");
+    // console.log("does this change on year change?");
     layer.on({
       mouseover: highlightFeature,
       mouseout: resetHighlight,
