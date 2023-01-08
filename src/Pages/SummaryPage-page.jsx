@@ -3,17 +3,23 @@ import { useParams } from "react-router-dom";
 import BarWithShadedRegion from "../Components/SummaryPageComponents/SummaryPageBarGraph-component";
 import LineGraph from "../Components/SummaryPageComponents/SummaryPageLineGraph-component";
 import { useGlobalContext } from "../Context-Reducer/Context";
+import { JSON_DATA } from "../RegionData/JSON_DATA";
 //
 function SummaryPage(params) {
   //
   console.log("summary Page rendered!");
   //
   const { district } = useParams();
-  const { regionData } = useGlobalContext();
+  console.log(district);
+  // const { regionData } = useGlobalContext();
   // Create var with filtered data based off district param
   // Lets use it for the summaryPage. Performance?
-  const districtData = regionData.filter(
-    (regionObj) => regionObj.DISTRICT === district
+
+  // const districtData = regionData.filter(
+  //   (regionObj) => regionObj.DISTRICT === district
+  // );
+  const districtData = JSON_DATA.filter(
+    (obj) => obj.ZONE === "total" && obj.DISTRICT === district
   );
   //
   return (
