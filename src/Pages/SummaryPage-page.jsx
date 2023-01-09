@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import BarWithShadedRegion from "../Components/SummaryPageComponents/SummaryPageBarGraph-component";
 import LineGraph from "../Components/SummaryPageComponents/SummaryPageLineGraph-component";
+import Recommendations from "../Components/SummaryPageComponents/SummaryReccom-component";
 import { useGlobalContext } from "../Context-Reducer/Context";
 import { JSON_DATA } from "../RegionData/JSON_DATA";
 //
@@ -81,8 +82,8 @@ function SummaryPage(params) {
             </div>
           )}
         </div>
-        <div className="w-full h-full bg-white shadow-lg rounded-lg p-2">
-          <h2>Recommendation Cards</h2>
+        <div className="w-full h-full bg-white shadow-lg rounded-lg p-1">
+          <Recommendations />
         </div>
       </section>
     </div>
