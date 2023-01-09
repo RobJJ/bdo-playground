@@ -17,7 +17,7 @@ function TabBar(params) {
   };
   //
   return (
-    <div className=" w-full p-2">
+    <div className=" w-full  p-2">
       <div className="w-full flex p-1 pb-2 gap-1 border-b-2 border-black">
         {/*Home NAV - fixed here. reroutes to homepage */}
         <Link

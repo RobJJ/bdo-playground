@@ -64,8 +64,8 @@ const LineGraph = ({ summaryData }) => {
   //
   return (
     <div className="flex flex-col items-center w-full h-full bg-white p-2">
-      <h2 className="text-2xl font-bold text-gray-700 underline">
-        {summaryData[0].DISTRICT}: Data
+      <h2 className="text-lg   font-bold text-gray-700 ">
+        {summaryData[0].DISTRICT.toUpperCase()} - SCORE OVER TIME
       </h2>
       <ResponsiveContainer className="w-4/6">
         <LineChart

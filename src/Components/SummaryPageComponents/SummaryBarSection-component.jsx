@@ -14,7 +14,7 @@ function BarChartSection({ data }) {
   return (
     <div className="w-full h-full  flex flex-col ">
       <div className=" w-full font-semibold text-lg p-2 pl-4 mt-2 flex justify-between items-center">
-        <h2>HEADER SECTION - SCORE INDICATORS</h2>
+        <h2>{data[0].DISTRICT.toUpperCase()} - SCORE INDICATORS</h2>
         <div className="mr-5">
           <BarYearFilter />
         </div>
