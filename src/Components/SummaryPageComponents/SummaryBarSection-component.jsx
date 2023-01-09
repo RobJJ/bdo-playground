@@ -4,12 +4,12 @@ import BarWithShadedRegion from "./SummaryPageBarGraph-component";
 //
 function BarChartSection({ data }) {
   return (
-    <div className="w-full h-full bg-red-100 flex flex-col">
-      <h2 className="bg-red-200 w-full font-semibold text-lg p-2 pl-4">
+    <div className="w-full h-full  flex flex-col ">
+      <h2 className=" w-full font-semibold text-lg p-2 pl-4 mt-4">
         HEADER SECTION - SCORE INDICATORS
       </h2>
-      <section className=" w-full h-full flex flex-col gap-2 p-2">
-        <div className="bg-pink-200 w-full h-full p-5">
+      <section className=" w-full h-full flex flex-col gap-2 p-2 ">
+        <div className=" flex flex-col w-full h-full p-5 justify-center items-center gap-2">
           <BarWithShadedRegion
             label="Air Quality Score"
             scoreLabel="AIR_SCORE"

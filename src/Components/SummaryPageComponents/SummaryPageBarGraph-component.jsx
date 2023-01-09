@@ -43,8 +43,8 @@ const BarWithShadedRegion = ({ label, icon, scoreLabel, data }) => {
   };
 
   return (
-    <div className="flex gap-5 items-center bg-blue-200 w-full">
-      <div className="w-2/6 text-right font-bold flex-none text-sm">
+    <div className="flex gap-5 items-center  w-full max-w-[680px] ">
+      <div className="w-3/12 text-right font-bold flex-none text-sm">
         {label}
       </div>
       <span className="text-3xl flex items-center">{icons[`${icon}`]}</span>
@@ -56,7 +56,7 @@ const BarWithShadedRegion = ({ label, icon, scoreLabel, data }) => {
             return (
               <span
                 className={`w-[10%] h-full ${
-                  idx < 9 ? "border-r-2 border-slate-300" : null
+                  idx < 9 ? "border-r-2 border-white" : null
                 }`}
               ></span>
             );
