@@ -67,7 +67,7 @@ const ScatterGraph = ({ toggle, current }) => {
   }, []);
   //
   function handleMouseOver(e) {
-    console.log("hey you moused over me bitch!");
+    // console.log(e);
   }
   //
   return (

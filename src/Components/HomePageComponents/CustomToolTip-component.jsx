@@ -19,7 +19,7 @@ function CustomTooltip({ active, payload, label, data }) {
     return (
       <div className="bg-white p-3 rounded-lg pointer-events-auto">
         <h2 className="underline font-semibold mb-1">
-          {payload[0].payload.Province}
+          {payload[0].payload.District}
         </h2>
         <p className="text-sm">{`${payload[0].name} : ${payload[0].value}`}</p>
         <p className="text-sm">{`${payload[1].name} : ${payload[1].value}`}</p>

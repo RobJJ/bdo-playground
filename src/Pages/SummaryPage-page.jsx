@@ -12,17 +12,14 @@ function SummaryPage(params) {
   console.log("summary Page rendered!");
   //
   const { district } = useParams();
-  console.log(district);
-  // const { regionData } = useGlobalContext();
-  // Create var with filtered data based off district param
-  // Lets use it for the summaryPage. Performance?
-
-  // const districtData = regionData.filter(
-  //   (regionObj) => regionObj.DISTRICT === district
-  // );
+  //
+  //
+  // collection of yearly data for this specific district
   const districtData = JSON_DATA.filter(
     (obj) => obj.ZONE === "total" && obj.DISTRICT === district
   );
+  // console.log(districtData);
+  //
   //
   return (
     <div className="bg-blue-100 w-full h-full p-2 flex gap-2 overflow-auto">

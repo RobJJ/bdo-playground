@@ -10,11 +10,12 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import CustomTooltipLineChart from "./CustomTooltipLineChart-component";
 
 const LineGraph = ({ summaryData }) => {
   // Using the url change to rerender the graph. Quick fix....
   const url = useParams();
-
+  // console.log("url here", url);
   const [filteredData, setFilteredData] = useState();
   //
   useEffect(() => {
@@ -58,13 +59,13 @@ const LineGraph = ({ summaryData }) => {
   ];
   //
   return (
-    <div className="flex flex-col items-center w-full h-full bg-red-100 p-5">
+    <div className="flex flex-col items-center w-full h-full bg-white p-2">
       <h2 className="text-2xl font-bold text-gray-700 underline">
         {summaryData[0].DISTRICT}: Data
       </h2>
       <ResponsiveContainer className="w-4/6">
         <LineChart
-          className="bg-slate-100 font-mono flex"
+          className="bg-white font-mono flex"
           data={filteredData}
           margin={{
             top: 15,
@@ -74,9 +75,17 @@ const LineGraph = ({ summaryData }) => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="YEAR" />
-          <YAxis domain={[0, 100]} />
-          <Tooltip />
+          <XAxis
+            dataKey="YEAR"
+            // tickLine={false}
+            dy={10}
+            // height={40}
+            // angle={-45}
+            // textAnchor="middle"
+            // padding={{ left: 50 }}
+          />
+          <YAxis domain={[0, 100]} dx={-10} />
+          <Tooltip content={<CustomTooltipLineChart />} />
           <Legend
             layout="vertical"
             verticalAlign="middle"
@@ -91,18 +100,21 @@ const LineGraph = ({ summaryData }) => {
             dataKey="AIR_SCORE"
             stroke="#82ca9d"
             strokeWidth={2}
+            name="Air Quality"
           />
           <Line
             type="monotone"
             dataKey="TEMP_SCORE"
             stroke="#8884d8"
             strokeWidth={2}
+            name="Weather"
           />
           <Line
             type="monotone"
             dataKey="FOREST_SCORE"
             stroke="#ffc658"
             strokeWidth={2}
+            name="Deforestation"
           />
         </LineChart>
       </ResponsiveContainer>
