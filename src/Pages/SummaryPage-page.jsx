@@ -24,7 +24,7 @@ function SummaryPage(params) {
   );
   //
   return (
-    <div className="bg-blue-100 w-full h-full p-2 flex gap-2">
+    <div className="bg-blue-100 w-full h-full p-2 flex gap-2 overflow-auto">
       <section className="w-4/6 h-full bg-blue-200 flex flex-col gap-2 p-2">
         {/* VISUAL DATA SECTION - LINE GRAPH */}
         <div className="bg-white w-full h-4/6 rounded-lg shadow-lg p-2 flex">
@@ -72,7 +72,7 @@ function SummaryPage(params) {
           />
         </div>
       </section>
-      <section className="w-2/6 h-full bg-blue-200 p-2 flex flex-col gap-2">
+      <section className="w-2/6 h-full bg-blue-200 p-2 flex flex-col gap-2 overflow-auto">
         <div className="w-full h-2/6 bg-white shadow-lg rounded-lg p-2">
           {districtData && (
             <div key={district} className="bg-blue-100 flex flex-col">
@@ -82,7 +82,7 @@ function SummaryPage(params) {
             </div>
           )}
         </div>
-        <div className="w-full h-full bg-white shadow-lg rounded-lg p-1">
+        <div className="w-full h-full bg-white shadow-lg rounded-lg p-1 flex overflow-auto">
           <Recommendations />
         </div>
       </section>
