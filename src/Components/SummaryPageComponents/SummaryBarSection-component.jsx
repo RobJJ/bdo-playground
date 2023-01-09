@@ -1,13 +1,24 @@
 import React from "react";
+import BarYearFilter from "./SummaryBarSectionYearFilter-component";
 import BarWithShadedRegion from "./SummaryPageBarGraph-component";
 //
 //
 function BarChartSection({ data }) {
+  // props is 'total' data for specific district
+  //
+  // create state var for year, default 2021.
+  // pass this setter to the filter component that is rendered next to header
+  // the filter sets the year and then triggers the useEFfect
+  // the useEffect changes the data for this page
+  //
   return (
     <div className="w-full h-full  flex flex-col ">
-      <h2 className=" w-full font-semibold text-lg p-2 pl-4 mt-4">
-        HEADER SECTION - SCORE INDICATORS
-      </h2>
+      <div className=" w-full font-semibold text-lg p-2 pl-4 mt-4 flex justify-between items-center">
+        <h2>HEADER SECTION - SCORE INDICATORS</h2>
+        <div className="mr-5">
+          <BarYearFilter />
+        </div>
+      </div>
       <section className=" w-full h-full flex flex-col gap-2 p-2 ">
         <div className=" flex flex-col w-full h-full p-5 justify-center items-center gap-2">
           <BarWithShadedRegion

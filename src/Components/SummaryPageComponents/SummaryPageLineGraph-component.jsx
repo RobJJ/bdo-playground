@@ -13,6 +13,8 @@ import {
 import CustomTooltipLineChart from "./CustomTooltipLineChart-component";
 
 const LineGraph = ({ summaryData }) => {
+  // props summaryData is all 'total' data for that district
+  //
   // Using the url change to rerender the graph. Quick fix....
   const url = useParams();
   // console.log("url here", url);

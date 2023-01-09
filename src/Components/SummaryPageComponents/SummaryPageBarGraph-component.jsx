@@ -28,7 +28,11 @@ const colorChart = {
 //
 //
 const BarWithShadedRegion = ({ label, icon, scoreLabel, data }) => {
+  // props data is all 'total' data for that district
   //
+
+  // taking props data and filtering for 2021...
+  // this will not be needed if we filter the data on the parent
   const district2021 = data.filter((dataObj) => {
     if (dataObj.YEAR === 2021 && dataObj.ZONE === "total") {
       return dataObj;
