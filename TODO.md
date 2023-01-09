@@ -1,3 +1,10 @@
+Tuesday 10th Jan Tasks to complete:
+
+- Add year filter function for summary page.
+- Scatter page : go over how the data is being pulled in year. Add filters for province,year, refresh map feature. Remove the Header and just put filters at the top section.
+- Check if you can toggle the x-axis between scores
+  \*\*\*\* check Choi Moi issues with summary page??
+
 Discussion:
 Summary:
 add econ line to the line graph over the years

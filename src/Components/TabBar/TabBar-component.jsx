@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../Context-Reducer/Context";
+import "remixicon/fonts/remixicon.css";
 //
 function TabBar(params) {
   //
@@ -16,25 +17,31 @@ function TabBar(params) {
   };
   //
   return (
-    <div className="bg-slate-300 w-full p-2">
-      <div className="w-full bg-white rounded-lg shadow-lg flex p-1">
+    <div className=" w-full p-2">
+      <div className="w-full flex p-1 pb-2 gap-1 border-b-2 border-black">
         {/*Home NAV - fixed here. reroutes to homepage */}
-        <Link to="/" className="p-1 border-2 border-black rounded-lg">
-          HOME PAGE
+        <Link
+          to="/"
+          className="bg-white border-2 border-black rounded-lg  px-2 flex gap-1 items-center font-semibold"
+        >
+          <span className="text-blue-600 text-xl flex">
+            <i class="ri-home-4-line"></i>
+          </span>
+
+          <span>HOME PAGE</span>
         </Link>
         {tabBarState.map((district) => {
           return (
             <div
               key={district.name}
-              className="p-1 border-2 border-black rounded-lg flex gap-2"
+              className="bg-white border-2 border-black rounded-lg flex items-center gap-1 px-2 font-semibold"
             >
               <Link to={`summary/${district.name}`}>{district.name}</Link>
               <span
                 onClick={() => removeTabDistrict(district.name)}
-                className="bg-red-300 cursor-pointer"
+                className=" cursor-pointer text-red-500 text-xl flex "
               >
-                {" "}
-                x{" "}
+                <i class="ri-close-line"></i>
               </span>
             </div>
           );
