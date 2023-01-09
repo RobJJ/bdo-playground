@@ -7,6 +7,7 @@ const icons = {
   air: <i class="ri-cloud-line"></i>,
   econ: <i class="ri-line-chart-line"></i>,
 };
+//
 function RecommendationCard({ iconType }) {
   return (
     <div className="w-full flex justify-between items-center gap-4 border-b border-slate-400 p-2">

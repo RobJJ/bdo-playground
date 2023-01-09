@@ -19,6 +19,10 @@ function CustomTooltipLineChart({ payload, active }) {
           <span className="mr-1">{payload[2].name}: </span>
           <span>{payload[2].value}</span>
         </div>
+        <div className="flex text-sm">
+          <span className="mr-1">{payload[3].name}: </span>
+          <span>{payload[3].value}</span>
+        </div>
       </div>
     );
   }
