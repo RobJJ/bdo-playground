@@ -66,6 +66,10 @@ const ScatterGraph = ({ toggle, current }) => {
     }, 1000);
   }, []);
   //
+  function handleMouseOver(e) {
+    console.log("hey you moused over me bitch!");
+  }
+  //
   return (
     <div className="flex flex-col gap-2 h-full w-full items-center ">
       {/* Header with Toggle */}
@@ -87,6 +91,7 @@ const ScatterGraph = ({ toggle, current }) => {
             left: 20,
             bottom: 15,
           }}
+          cursor="pointer"
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
@@ -114,7 +119,8 @@ const ScatterGraph = ({ toggle, current }) => {
             ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
           />
           <Tooltip
-            cursor={true}
+            // cursor={{ stroke: "red", strokeWidth: 2 }}
+
             content={<CustomTooltip data={"District Data"} />}
             // trigger="click"
             // trigger={booleanTest ? "click" : null}
@@ -160,7 +166,11 @@ const ScatterGraph = ({ toggle, current }) => {
             fill="#008000"
           />
 
-          <Scatter fill="#8884d8" shape={<RenderDot />} />
+          <Scatter
+            fill="#8884d8"
+            shape={<RenderDot />}
+            onMouseOver={handleMouseOver}
+          />
         </ScatterChart>
       </ResponsiveContainer>
     </div>
