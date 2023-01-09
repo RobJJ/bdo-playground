@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import BarWithShadedRegion from "../Components/SummaryPageComponents/SummaryPageBarGraph-component";
+import SummaryBasicInfo from "../Components/SummaryPageComponents/SummaryPageBasicInfo-component";
 import LineGraph from "../Components/SummaryPageComponents/SummaryPageLineGraph-component";
 import Recommendations from "../Components/SummaryPageComponents/SummaryReccom-component";
 import { useGlobalContext } from "../Context-Reducer/Context";
@@ -74,13 +75,7 @@ function SummaryPage(params) {
       </section>
       <section className="w-2/6 h-full bg-blue-200 p-2 flex flex-col gap-2 overflow-auto">
         <div className="w-full h-2/6 bg-white shadow-lg rounded-lg p-2">
-          {districtData && (
-            <div key={district} className="bg-blue-100 flex flex-col">
-              <span>Region: {districtData[0].GEOGRAPHIC_REGION}</span>
-              <span>Province: {districtData[0].PROVINCE}</span>
-              <span>District: {districtData[0].DISTRICT}</span>
-            </div>
-          )}
+          <SummaryBasicInfo />
         </div>
         <div className="w-full h-full bg-white shadow-lg rounded-lg p-1 flex overflow-auto">
           <Recommendations />
@@ -106,3 +101,14 @@ export default SummaryPage;
 //   }
 //   return;
 // })}
+
+// Taken from basic info section
+// {
+//   districtData && (
+//     <div key={district} className="bg-blue-100 flex flex-col">
+//       <span>Region: {districtData[0].GEOGRAPHIC_REGION}</span>
+//       <span>Province: {districtData[0].PROVINCE}</span>
+//       <span>District: {districtData[0].DISTRICT}</span>
+//     </div>
+//   );
+// }
