@@ -25,6 +25,7 @@ const LineGraph = ({ summaryData }) => {
       "AIR_SCORE",
       "TEMP_SCORE",
       "FOREST_SCORE",
+      "ECON_SCORE",
     ];
     // On initial load, set filteredData to the 'total' values
     // Then map through this to create the data for the chart
@@ -56,6 +57,7 @@ const LineGraph = ({ summaryData }) => {
     { value: "Air Quality", color: "#82ca9d", type: "line" },
     { value: "Weather", color: "#8884d8", type: "line" },
     { value: "Deforestation", color: "#ffc658", type: "line" },
+    { value: "Economic", color: "#00bfff", type: "line" },
   ];
   //
   return (
@@ -115,6 +117,13 @@ const LineGraph = ({ summaryData }) => {
             stroke="#ffc658"
             strokeWidth={2}
             name="Deforestation"
+          />
+          <Line
+            type="monotone"
+            dataKey="ECON_SCORE"
+            stroke="#00bfff"
+            strokeWidth={2}
+            name="Economic"
           />
         </LineChart>
       </ResponsiveContainer>
