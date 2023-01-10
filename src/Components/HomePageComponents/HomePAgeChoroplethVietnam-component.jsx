@@ -158,10 +158,12 @@ function ChildChoropleth(params) {
     let options = {
       // docs:https://leafletjs.com/reference.html#tooltip
       offset: L.point(0, -30),
-      className: "underline text-blue-200 font-bold",
+      className: "",
     };
+
     // content for popup
-    let content = `Province: ${layer.feature.properties.shapeName}</br>Districts: ${numberOfDistrcitsInProvince}</br>Econ Score: ${averageEconScore}</br>Env Score: ${averageEnvScore}</br>Year: ${layerData[0].YEAR}`;
+    let content = `<b><font size="3">${layer.feature.properties.shapeName}</font></b></br>Districts: ${numberOfDistrcitsInProvince}</br>Econ Score: ${averageEconScore}</br>Env Score: ${averageEnvScore}</br><small><font color="gray">click to select province</font></small>`;
+
     // create the popup
     let popup = L.popup(options).setContent(content);
     //feature.properties.shapeName
