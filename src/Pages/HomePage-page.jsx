@@ -13,9 +13,8 @@ import ListSection from "../Components/HomePageComponents/ListSection-component"
 //
 function HomePage(params) {
   //
-  const { regionData, tabAddFunc, chosenYear, chosenProvince } =
-    useGlobalContext();
-  const [filteredData, setFilteredData] = useState(regionData);
+  const { tabAddFunc, chosenYear, chosenProvince } = useGlobalContext();
+  // const [filteredData, setFilteredData] = useState(regionData);
   // users current graph - default: map
   const [currentPage, setCurrentPage] = useState("map");
   //

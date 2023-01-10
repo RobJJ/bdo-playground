@@ -16,6 +16,7 @@ import {
 import MapTypeToggle from "./HomePageChoroplethControl-component";
 import TestDiv from "./HomePageScatterTest-component";
 import { JSON_DATA } from "../../RegionData/JSON_DATA"; // green earth data
+import FilterYear from "./Choropleth-filter-year-component";
 
 const dataOld = [
   { "Environment Score": 10.52, "Economic Score": 20.87, z: "boob" },
@@ -25,23 +26,48 @@ const dataOld = [
   { "Environment Score": 80, "Economic Score": 50, z: "rr" },
   { "Environment Score": 92, "Economic Score": 40, z: "tt" },
 ];
-// 2021 total data filtered
+// 2021 total data filtered (old)
+// const data2021ZoneTotal = JSON_DATA.filter(
+//   (obj) => obj.YEAR === 2021 && obj.ZONE === "total"
+// );
+// all distrcits with 'total' zone
 const data2021ZoneTotal = JSON_DATA.filter(
   (obj) => obj.YEAR === 2021 && obj.ZONE === "total"
 );
+const data2020ZoneTotal = JSON_DATA.filter(
+  (obj) => obj.YEAR === 2020 && obj.ZONE === "total"
+);
+const data2018ZoneTotal = JSON_DATA.filter(
+  (obj) => obj.YEAR === 2018 && obj.ZONE === "total"
+);
+const data2019ZoneTotal = JSON_DATA.filter(
+  (obj) => obj.YEAR === 2019 && obj.ZONE === "total"
+);
+const dataByYear = {
+  2021: data2021ZoneTotal,
+  2020: data2020ZoneTotal,
+  2019: data2019ZoneTotal,
+  2018: data2018ZoneTotal,
+};
 // An array of the Districts: 2021: total
-const ALL_DISTRCITS = [];
+// Make sure only 1 unique distrcit is added
+// const ALL_DISTRCITS = [];
+//
+// default 2021 data for start of component
+const DEFAULT_ALL_DISTRCITS = [];
 data2021ZoneTotal.forEach((obj) => {
-  const isIncluded = ALL_DISTRCITS.find(
+  const isIncluded = DEFAULT_ALL_DISTRCITS.find(
     (data) => data.DISTRICT === obj.DISTRICT
   );
   if (!isIncluded) {
-    ALL_DISTRCITS.push({ ...obj });
+    DEFAULT_ALL_DISTRCITS.push({ ...obj });
   } else return;
 });
-// console.log(ALL_DISTRCITS);
+// different length... duplicates or real districts with same names
+// console.log("test1 legnth: ", DEFAULT_ALL_DISTRCITS.length);
+// console.log("test2 length: ", data2021ZoneTotal.length);
 //
-const districtDataForScatter = ALL_DISTRCITS.map((district) => {
+const defaultDistrictDataForScatter = DEFAULT_ALL_DISTRCITS.map((district) => {
   return {
     "Environment Score": Math.round(district.ENVR_SCORE),
     "Economic Score": Math.round(district.ECON_SCORE),
@@ -60,15 +86,61 @@ const RenderDot = ({ cx, cy }) => {
 // Main Component
 const ScatterGraph = ({ toggle, current }) => {
   //
-  const { tabAddFunc } = useGlobalContext();
+  const { tabAddFunc, choroplethYear, setChoroplethYear } = useGlobalContext();
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   //
   useEffect(() => {
     setTimeout(() => {
-      setData(districtDataForScatter);
+      //
+      const dataToUse = dataByYear[Number(choroplethYear)];
+      const uniqueDistricts = [];
+      dataToUse.forEach((obj) => {
+        const isIncluded = uniqueDistricts.find(
+          (data) => data.DISTRICT === obj.DISTRICT
+        );
+        if (!isIncluded) {
+          uniqueDistricts.push({ ...obj });
+        } else return;
+      });
+      const dataForScatter = uniqueDistricts.map((district) => {
+        return {
+          "Environment Score": Math.round(district.ENVR_SCORE),
+          "Economic Score": Math.round(district.ECON_SCORE),
+          District: district.DISTRICT,
+          Province: district.PROVINCE,
+        };
+      });
+      // start component with 2021 total data
+      // setData(defaultDistrictDataForScatter);
+      setData(dataForScatter);
     }, 1000);
   }, []);
+  //
+  useEffect(() => {
+    // get data for chosen year
+    const dataToUse = dataByYear[Number(choroplethYear)];
+    const uniqueDistricts = [];
+    dataToUse.forEach((obj) => {
+      const isIncluded = uniqueDistricts.find(
+        (data) => data.DISTRICT === obj.DISTRICT
+      );
+      if (!isIncluded) {
+        uniqueDistricts.push({ ...obj });
+      } else return;
+    });
+    // Create data structure for chart
+    const dataForScatter = uniqueDistricts.map((district) => {
+      return {
+        "Environment Score": Math.round(district.ENVR_SCORE),
+        "Economic Score": Math.round(district.ECON_SCORE),
+        District: district.DISTRICT,
+        Province: district.PROVINCE,
+      };
+    });
+    // setData with this new data
+    setData(dataForScatter);
+  }, [choroplethYear]);
   //
   // function handleMouseOver(e) {
   //   console.log(e);
@@ -85,8 +157,9 @@ const ScatterGraph = ({ toggle, current }) => {
     <div className="flex flex-col gap-2 h-full w-full items-center ">
       {/* Header with Toggle */}
       <div className=" relative w-full">
+        <FilterYear />
         <h2 className="underline text-center">
-          District Data Vietnam: 2021: Total
+          District Data Vietnam: {choroplethYear}: Total
         </h2>
         <MapTypeToggle current={current} toggle={toggle} />
       </div>
