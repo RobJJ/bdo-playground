@@ -3,7 +3,7 @@ import { FaAngleDown } from "react-icons/fa";
 //
 const currentUsedYears = [2021, 2020, 2019, 2018];
 //
-function BarYearFilter(params) {
+function BarYearFilter({ chosenYear, setChosenYear }) {
   //
   const [isOpen, setIsOpen] = useState(false);
   //
@@ -14,6 +14,7 @@ function BarYearFilter(params) {
   const handleMapYearClick = (e) => {
     console.log("The year has been clicked.. year is:", e.target.dataset.tag);
     // const yearSelected = e.target.dataset.tag;
+    setChosenYear(e.target.dataset.tag);
     // setChoroplethYear(yearSelected);
     setIsOpen(!isOpen);
   };
@@ -25,9 +26,10 @@ function BarYearFilter(params) {
           <button
             onClick={toggleDropdown}
             type="button"
+            value={chosenYear}
             className="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-1 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out "
           >
-            Year: {2019}
+            Year: {chosenYear}
             <FaAngleDown className="text-base ml-1" />
           </button>
         </span>

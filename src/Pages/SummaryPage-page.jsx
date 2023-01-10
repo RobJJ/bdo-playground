@@ -19,6 +19,7 @@ function SummaryPage(params) {
   const districtData = JSON_DATA.filter(
     (obj) => obj.ZONE === "total" && obj.DISTRICT === district
   );
+  const districtData2021 = districtData.filter((obj) => obj.YEAR === 2021);
   // console.log(districtData);
   //
   //
@@ -31,7 +32,7 @@ function SummaryPage(params) {
         </div>
         {/* VISUAL DATA SECTION - BAR GRAPH const rounded = Math.round(float * 100) / 100; */}
         <div className="bg-white w-full h-2/6 rounded-lg shadow-xl p-1 ">
-          <BarChartSection data={districtData} />
+          <BarChartSection data={districtData} data2021={districtData2021} />
         </div>
       </section>
       <section className="w-2/6 h-full  p-2 flex flex-col gap-2 overflow-auto">
