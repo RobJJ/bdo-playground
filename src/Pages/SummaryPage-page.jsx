@@ -19,7 +19,9 @@ function SummaryPage(params) {
   const districtData = JSON_DATA.filter(
     (obj) => obj.ZONE === "total" && obj.DISTRICT === district
   );
-  const districtData2021 = districtData.filter((obj) => obj.YEAR === 2021);
+  const districtData2021 = districtData.filter(
+    (obj) => obj.YEAR === 2021 && obj.DISTRICT === district
+  );
   // console.log(districtData);
   //
   //

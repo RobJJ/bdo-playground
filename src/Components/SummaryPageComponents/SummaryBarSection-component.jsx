@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import BarYearFilter from "./SummaryBarSectionYearFilter-component";
 import BarWithShadedRegion from "./SummaryPageBarGraph-component";
 //
@@ -6,15 +7,8 @@ const defaultYearBarChart = 2021;
 
 //
 function BarChartSection({ data, data2021 }) {
-  // default data on load
-  // const district2021 = data.filter((dataObj) => {
-  //   console.log("being called alot?");
-  //   if (dataObj.YEAR === 2021 && dataObj.ZONE === "total") {
-  //     return dataObj;
-  //   }
-  // });
-
-  // props is 'total' data for specific district. ok
+  //
+  const url = useParams();
   //
   // create state var for year, default 2021.
   const [barChartYear, setBarChartYear] = useState(defaultYearBarChart);
@@ -29,7 +23,7 @@ function BarChartSection({ data, data2021 }) {
       }
     });
     setSpecficYearData(newDataForNewYear);
-  }, [barChartYear]);
+  }, [barChartYear, url]);
   //
   //
   return (
