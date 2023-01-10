@@ -59,6 +59,7 @@ const BarWithShadedRegion = ({ label, icon, scoreLabel, data }) => {
           {[...Array(10)].map((piece, idx) => {
             return (
               <span
+                key={idx}
                 className={`w-[10%] h-full ${
                   idx < 9 ? "border-r-2 border-white" : null
                 }`}

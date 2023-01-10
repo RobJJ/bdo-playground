@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CustomTooltip from "./CustomToolTip-component";
+import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../../Context-Reducer/Context";
 import {
   ScatterChart,
   Scatter,
@@ -54,20 +56,29 @@ console.log("called each time??");
 const RenderDot = ({ cx, cy }) => {
   return <Dot cx={cx} cy={cy} fill="blue" r={2} />;
 };
-//
+// ***********************************
 // Main Component
 const ScatterGraph = ({ toggle, current }) => {
   //
+  const { tabAddFunc } = useGlobalContext();
   const [data, setData] = useState([]);
-
+  const navigate = useNavigate();
+  //
   useEffect(() => {
     setTimeout(() => {
       setData(districtDataForScatter);
     }, 1000);
   }, []);
   //
-  function handleMouseOver(e) {
-    // console.log(e);
+  // function handleMouseOver(e) {
+  //   console.log(e);
+  // }
+  function handleClickEvent(e) {
+    // the dot that you are going to click is going to be a district... on user click take them to the summary page
+    const districtClicked = e.District;
+    // console.log(districtClicked);
+    tabAddFunc(districtClicked);
+    navigate(`summary/${districtClicked}`);
   }
   //
   return (
@@ -169,7 +180,8 @@ const ScatterGraph = ({ toggle, current }) => {
           <Scatter
             fill="#8884d8"
             shape={<RenderDot />}
-            onMouseOver={handleMouseOver}
+            // onMouseOver={handleMouseOver}
+            onClick={handleClickEvent}
           />
         </ScatterChart>
       </ResponsiveContainer>
