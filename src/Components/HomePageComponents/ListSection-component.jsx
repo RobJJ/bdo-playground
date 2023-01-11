@@ -53,7 +53,18 @@ function ListSection(params) {
   //
   useEffect(() => {
     // guard clause on first null load
-    if (!provinceData) return;
+    // ****
+    // if (!provinceData) return;
+    if (!provinceData) {
+      console.log("this condition has been met!");
+      const newData = zoneTotalData.filter(
+        (obj) => obj.YEAR === Number(choroplethYear)
+      );
+      //
+      // set
+      setYearDataTotal(newData);
+      return;
+    }
     const newData = zoneTotalData
       .filter((obj) => obj.YEAR === Number(choroplethYear))
       .filter((obj) => obj.PROVINCE === provinceData);
