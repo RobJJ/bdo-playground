@@ -27,13 +27,13 @@ function SummaryPage(params) {
   //
   return (
     <div className=" w-full h-full p-2 flex gap-2 overflow-auto">
-      <section className="w-4/6 h-full  flex flex-col gap-2 p-2">
+      <section className="w-4/6 h-full  flex flex-col gap-2 p-2 overflow-auto">
         {/* VISUAL DATA SECTION - LINE GRAPH */}
         <div className="bg-white w-full h-4/6 rounded-lg shadow-xl p-2 flex">
           <LineGraph summaryData={districtData} />
         </div>
         {/* VISUAL DATA SECTION - BAR GRAPH const rounded = Math.round(float * 100) / 100; */}
-        <div className="bg-white w-full h-2/6 rounded-lg shadow-xl p-1 ">
+        <div className="bg-white w-full h-2/6 rounded-lg shadow-xl p-1 overflow-auto">
           <BarChartSection data={districtData} data2021={districtData2021} />
         </div>
       </section>

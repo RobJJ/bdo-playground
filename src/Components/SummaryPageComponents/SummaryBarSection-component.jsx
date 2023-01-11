@@ -37,8 +37,8 @@ function BarChartSection({ data, data2021 }) {
           />
         </div>
       </div>
-      <section className=" w-full h-full flex flex-col gap-2 p-2 ">
-        <div className=" flex flex-col w-full h-full p-5 justify-center items-center gap-2">
+      <section className=" w-full h-full flex flex-col gap-2 p-2 overflow-auto ">
+        <div className=" flex flex-col w-full h-full p-5 justify-center items-center gap-2 overflow-auto scrollbar-none">
           <BarWithShadedRegion
             label="Air Quality Score"
             scoreLabel="AIR_SCORE"
