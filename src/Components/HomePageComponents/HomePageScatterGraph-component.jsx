@@ -18,6 +18,7 @@ import TestDiv from "./HomePageScatterTest-component";
 import { JSON_DATA } from "../../RegionData/JSON_DATA"; // green earth data
 import FilterYear from "./Choropleth-filter-year-component";
 import AxisToggle from "./HomePageScatterAxisToggle-component";
+import ProvinceToggle from "./HomePageScatterProvinceFilter-component";
 
 const dataOld = [
   { "Environment Score": 10.52, "Economic Score": 20.87, z: "boob" },
@@ -172,6 +173,7 @@ const ScatterGraph = ({ toggle, current }) => {
       <div className=" relative w-full  h-6">
         <FilterYear />
         <AxisToggle xAxis={xAxis} setXAxis={setXAxis} />
+        <ProvinceToggle />
         {/*<h2 className=" text-center font-semibold">
           District Data Vietnam: {choroplethYear}
   </h2>*/}
