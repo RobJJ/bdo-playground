@@ -60,11 +60,11 @@ function HomePage(params) {
         </div>
       </div>
       {/* Info area - 2 pieces */}
-      <div className=" w-2/6 h-full smlr:w-full smlr:h-2/6 p-2 flex flex-col smlr:flex-row gap-2">
-        <div className="bg-white w-full h-2/6 smlr:h-full smlr:w-2/6 rounded-lg shadow-xl p-1">
+      <div className=" w-2/6 h-full flex flex-col smlr:w-full smlr:h-2/6 p-2  smlr:flex-row gap-2 overflow-auto">
+        <div className="bg-white w-full smlr:h-full smlr:w-2/6 rounded-lg shadow-xl p-1">
           <BasicInfoHome />
         </div>
-        <div className="bg-white w-full h-4/6 smlr:h-full smlr:w-4/6 rounded-lg shadow-lg p-1">
+        <div className="bg-white w-full h-full smlr:h-full smlr:w-4/6 rounded-lg shadow-lg p-1 flex overflow-auto">
           <ListSection />
         </div>
       </div>
