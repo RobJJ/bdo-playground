@@ -17,11 +17,11 @@ function LayerSwitch(params) {
   }
   //
   return (
-    <div className="absolute left-0 top-20 z-[2000] flex flex-col bg-[#f5f5f5] border-slate-400 border-2 ml-3">
+    <div className="absolute top-0 left-60 z-[2000] flex  bg-[#f5f5f5] border-slate-400 border-2 ">
       <button
         onClick={handleLayerTypeSwitch}
         data-tag="env"
-        className={`p-1 border-b-2 border-slate-400 ${
+        className={`p-1 px-2 border-r-2 border-slate-400 ${
           layerType === "env" ? `bg-green-300` : null
         }`}
         type="button"
@@ -31,10 +31,10 @@ function LayerSwitch(params) {
       <button
         onClick={handleLayerTypeSwitch}
         data-tag="econ"
-        className={`p-1 ${layerType === "econ" ? `bg-blue-300` : null}`}
+        className={`p-1 px-2 ${layerType === "econ" ? `bg-blue-300` : null}`}
         type="button"
       >
-        Econ
+        Eco
       </button>
     </div>
   );

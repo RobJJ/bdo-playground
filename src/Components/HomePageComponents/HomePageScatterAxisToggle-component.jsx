@@ -53,7 +53,7 @@ function AxisToggle({ setXAxis, xAxis }) {
         </span>
       </div>
       {isOpen && (
-        <div className="origin-top-left absolute mt-2 w-56 rounded-md shadow-lg">
+        <div className="origin-top-left absolute mt-2 w-44 rounded-md shadow-lg">
           <div className="rounded-md bg-white shadow-xs">
             <div
               className="py-1"
