@@ -16,10 +16,23 @@ function TabBar(params) {
     navigate("/");
   };
   //
+  // function handleHoverOver(e) {
+  //   // console.log(e.target);
+  //   e.target.classList.add("scale-95");
+  //   e.target.classList.add("shadow-[0_0_10px_#333]");
+  // }
+  // function handleHoverOut(e) {
+  //   // console.log(e.target);
+  //   e.target.classList.remove("scale-95");
+  //   e.target.classList.remove("shadow-[0_0_10px_#333]");
+  // }
+  //
+  //
   return (
     <div className=" w-full  p-2">
       <div className="w-full flex p-1 pb-2 gap-1 border-b-2 border-black">
         {/*Home NAV - fixed here. reroutes to homepage */}
+
         <Link
           to="/"
           className="bg-white border-2 border-black rounded-lg  px-2 flex gap-1 items-center font-semibold"
@@ -30,6 +43,7 @@ function TabBar(params) {
 
           <span>HOME PAGE</span>
         </Link>
+
         {tabBarState.map((district) => {
           return (
             <div

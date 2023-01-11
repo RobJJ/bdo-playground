@@ -17,6 +17,7 @@ import MapTypeToggle from "./HomePageChoroplethControl-component";
 import TestDiv from "./HomePageScatterTest-component";
 import { JSON_DATA } from "../../RegionData/JSON_DATA"; // green earth data
 import FilterYear from "./Choropleth-filter-year-component";
+import AxisToggle from "./HomePageScatterAxisToggle-component";
 
 const dataOld = [
   { "Environment Score": 10.52, "Economic Score": 20.87, z: "boob" },
@@ -54,27 +55,27 @@ const dataByYear = {
 // const ALL_DISTRCITS = [];
 //
 // default 2021 data for start of component
-const DEFAULT_ALL_DISTRCITS = [];
-data2021ZoneTotal.forEach((obj) => {
-  const isIncluded = DEFAULT_ALL_DISTRCITS.find(
-    (data) => data.DISTRICT === obj.DISTRICT
-  );
-  if (!isIncluded) {
-    DEFAULT_ALL_DISTRCITS.push({ ...obj });
-  } else return;
-});
+// const DEFAULT_ALL_DISTRCITS = [];
+// data2021ZoneTotal.forEach((obj) => {
+//   const isIncluded = DEFAULT_ALL_DISTRCITS.find(
+//     (data) => data.DISTRICT === obj.DISTRICT
+//   );
+//   if (!isIncluded) {
+//     DEFAULT_ALL_DISTRCITS.push({ ...obj });
+//   } else return;
+// });
 // different length... duplicates or real districts with same names
 // console.log("test1 legnth: ", DEFAULT_ALL_DISTRCITS.length);
 // console.log("test2 length: ", data2021ZoneTotal.length);
 //
-const defaultDistrictDataForScatter = DEFAULT_ALL_DISTRCITS.map((district) => {
-  return {
-    "Environment Score": Math.round(district.ENVR_SCORE),
-    "Economic Score": Math.round(district.ECON_SCORE),
-    District: district.DISTRICT,
-    Province: district.PROVINCE,
-  };
-});
+// const defaultDistrictDataForScatter = DEFAULT_ALL_DISTRCITS.map((district) => {
+//   return {
+//     "Environment Score": Math.round(district.ENVR_SCORE),
+//     "Economic Score": Math.round(district.ECON_SCORE),
+//     District: district.DISTRICT,
+//     Province: district.PROVINCE,
+//   };
+// });
 // console.log(districtDataForScatter);
 //
 console.log("called each time??");
@@ -86,10 +87,12 @@ const RenderDot = ({ cx, cy }) => {
 // Main Component
 const ScatterGraph = ({ toggle, current }) => {
   //
-  const { tabAddFunc, choroplethYear, setChoroplethYear } = useGlobalContext();
+  const { tabAddFunc, choroplethYear } = useGlobalContext();
   const [data, setData] = useState([]);
+  const [xAxis, setXAxis] = useState("Environment Score");
   const navigate = useNavigate();
   //
+  // OnLoad
   useEffect(() => {
     setTimeout(() => {
       //
@@ -106,17 +109,22 @@ const ScatterGraph = ({ toggle, current }) => {
       const dataForScatter = uniqueDistricts.map((district) => {
         return {
           "Environment Score": Math.round(district.ENVR_SCORE),
+          "Air Quality Score": Math.round(district.AIR_SCORE),
+          "Deforestation Score": Math.round(district.FOREST_SCORE),
+          "Weather Score": Math.round(district.TEMP_SCORE),
           "Economic Score": Math.round(district.ECON_SCORE),
           District: district.DISTRICT,
           Province: district.PROVINCE,
         };
       });
+
       // start component with 2021 total data
       // setData(defaultDistrictDataForScatter);
       setData(dataForScatter);
     }, 1000);
   }, []);
   //
+  // On year change
   useEffect(() => {
     // get data for chosen year
     const dataToUse = dataByYear[Number(choroplethYear)];
@@ -133,6 +141,9 @@ const ScatterGraph = ({ toggle, current }) => {
     const dataForScatter = uniqueDistricts.map((district) => {
       return {
         "Environment Score": Math.round(district.ENVR_SCORE),
+        "Air Quality Score": Math.round(district.AIR_SCORE),
+        "Deforestation Score": Math.round(district.FOREST_SCORE),
+        "Weather Score": Math.round(district.TEMP_SCORE),
         "Economic Score": Math.round(district.ECON_SCORE),
         District: district.DISTRICT,
         Province: district.PROVINCE,
@@ -142,9 +153,11 @@ const ScatterGraph = ({ toggle, current }) => {
     setData(dataForScatter);
   }, [choroplethYear]);
   //
-  // function handleMouseOver(e) {
-  //   console.log(e);
-  // }
+  //
+  function handleXaxisChange() {
+    //
+  }
+  //
   function handleClickEvent(e) {
     // the dot that you are going to click is going to be a district... on user click take them to the summary page
     const districtClicked = e.District;
@@ -156,11 +169,12 @@ const ScatterGraph = ({ toggle, current }) => {
   return (
     <div className="flex flex-col gap-2 h-full w-full items-center ">
       {/* Header with Toggle */}
-      <div className=" relative w-full">
+      <div className=" relative w-full  h-6">
         <FilterYear />
-        <h2 className="underline text-center">
-          District Data Vietnam: {choroplethYear}: Total
-        </h2>
+        <AxisToggle xAxis={xAxis} setXAxis={setXAxis} />
+        {/*<h2 className=" text-center font-semibold">
+          District Data Vietnam: {choroplethYear}
+  </h2>*/}
         <MapTypeToggle current={current} toggle={toggle} />
       </div>
       {/* <TestDiv /> */}
@@ -180,14 +194,16 @@ const ScatterGraph = ({ toggle, current }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             label={{
-              value: "Environmental score",
+              value: `${xAxis}`,
               position: "insideBottom",
-              offset: -10,
-              textDecoration: "underline",
+              offset: -11,
+              textDecoration: "",
               fontWeight: "bold",
             }}
+            style={{ "font-size": "12px" }}
             type="number"
-            dataKey="Environment Score"
+            // using state to determine x-axis value
+            dataKey={xAxis}
             ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
           />
 
@@ -196,9 +212,10 @@ const ScatterGraph = ({ toggle, current }) => {
               value: "Economic Score",
               angle: -90,
               position: "insideLeft",
-              textDecoration: "underline",
+              textDecoration: "",
               fontWeight: "bold",
             }}
+            style={{ "font-size": "12px" }}
             dataKey="Economic Score"
             ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
           />
