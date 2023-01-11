@@ -196,10 +196,11 @@ const ScatterGraph = ({ toggle, current }) => {
             label={{
               value: `${xAxis}`,
               position: "insideBottom",
-              offset: -11,
+              offset: -10,
               textDecoration: "",
               fontWeight: "bold",
             }}
+            tickLine={false}
             style={{ "font-size": "12px" }}
             type="number"
             // using state to determine x-axis value
@@ -215,6 +216,7 @@ const ScatterGraph = ({ toggle, current }) => {
               textDecoration: "",
               fontWeight: "bold",
             }}
+            tickLine={false}
             style={{ "font-size": "12px" }}
             dataKey="Economic Score"
             ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]}
